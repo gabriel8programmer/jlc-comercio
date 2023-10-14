@@ -1,0 +1,36 @@
+
+#login {
+
+    //range
+    #range {
+        height: 78px;
+        background-color: $bg-secondary;
+    }
+
+    //logo app
+    #logo-app {
+        width: 130px;
+        height: 73px;
+    }
+
+    //form 
+    #form-login {
+        background: linear-gradient(to right, rgba($bg-primary, .5), rgba($bg-secondary, .3), rgba($bg-secondary, .5));
+
+        #icon-user {
+            width: 85px;
+            height: 85px;
+        }
+
+        #buttons {
+
+            input {
+                transition: .1s;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,49 @@
+/*reset css*/
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+}
+
+@media (max-width: 991px) {
+  #navbar-icon-user {
+    display: none;
+  }
+}
+#login #range {
+  height: 78px;
+  background-color: #0b0d45;
+}
+#login #logo-app {
+  width: 130px;
+  height: 73px;
+}
+#login #form-login {
+  background: linear-gradient(to right, rgba(50, 157, 199, 0.5), rgba(11, 13, 69, 0.3), rgba(11, 13, 69, 0.5));
+}
+#login #form-login #icon-user {
+  width: 85px;
+  height: 85px;
+}
+#login #form-login #buttons input {
+  transition: 0.1s;
+}
+#login #form-login #buttons input:hover {
+  text-decoration: underline;
+}
+
+#header-dashboard {
+  background-color: #329dc7;
+}
+
+#navbar-dashboard {
+  background-color: #111;
+}
+
+.frame-orange {
+  color: #f47600;
+}
+
+/*# sourceMappingURL=app.css.map */
