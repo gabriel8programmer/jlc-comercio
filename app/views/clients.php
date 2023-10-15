@@ -1,11 +1,3 @@
-<?php
-
-require_once("header.php");
-require_once("navbar.php");
-
-require_once("modal_new_client.php");
-?>
-
 <main class="container-fluid">
 
     <section class="row px-4 my-3 justify-content-between">
@@ -74,7 +66,5 @@ require_once("modal_new_client.php");
                 </tr>
             </tbody>
         </table>
-
     </section>
-
 </main>

@@ -1,5 +1,10 @@
 <?php 
 
+//simple function what to check if exists a user in the session
+function check_session(){
+    return isset($_SESSION["user"]);
+}
+
 //simple function for to show the datas in display
 function printData($data, $die = true){
     echo "<pre>";
@@ -7,5 +12,9 @@ function printData($data, $die = true){
         print_r($data);
     } else {
         echo $data;
+    }
+
+    if ($die){
+        die("<br>FIM<br>");
     }
 }

@@ -1,11 +1,3 @@
-<?php
-
-require_once("header.php");
-require_once("navbar.php");
-
-require_once("modal_new_product.php");
-?>
-
 <main class="container-fluid">
 
     <section class="row px-4 my-3 justify-content-between">
