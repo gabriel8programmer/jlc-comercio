@@ -89,6 +89,7 @@
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Administrador</a></li>
                     <li><a class="dropdown-item" href="#">Tesoreiro</a></li>
+                    <li><a class="dropdown-item" href="#">Operador</a></li>
                 </ul>
             </div>
         </div>
