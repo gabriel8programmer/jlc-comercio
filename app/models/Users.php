@@ -14,24 +14,33 @@ class Users extends BaseModel
 
         //check if there is a user in the database
         $this->db_connect();
-        $results = $this->query("SELECT id, `password` FROM users 
-        WHERE username = :username"
+        $results = $this->query("SELECT id, `password` 
+        FROM users 
+        WHERE :username = `name`"
         , $params);
 
+        
         //if there is no user, returns false
         if ($results->affected_rows == 0){
             return [
                 "status" => false
             ];
         }
-
-        //there is a user with that name (username)
-        //check if the password is correct
+        
+        
+        // there is a user with that name (username)
+        // check if the password is correct
         // if (!password_verify($password, $results->results[0]->password)){
         //     return [
-        //         "status" => false
+        //         "status" => false,
         //     ];
         // }
+
+        if ($results->results[0]->password != $password){
+            return [
+                "status" => false
+            ];
+        }
 
         //login is ok
         return [

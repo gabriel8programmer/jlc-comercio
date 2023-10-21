@@ -20,7 +20,7 @@
                     </div>
 
                     <!--form login-->
-                    <form action="#" method="post" class="p-3 rounded-4" id="form-login" novalidate>
+                    <form action="?ct=main&mt=login_submit" method="post" class="p-3 rounded-4" id="form-login">
 
                         <!--title-->
                         <div class="text-center">
@@ -55,15 +55,20 @@
                         </div>
                     </form>
 
-                    <!--show errors-->
-                    <?php if (!empty($validation_errors)) : ?>
-                        <div class="alert alert-danger p-2 my-2 text-center">
-                            <?php foreach ($validation_errors as $error) : ?>
-                                <div><?= $error ?></div>
-                            <?php endforeach; ?>
-                        </div>
-                    <?php endif; ?>
                 </div>
+                <div class="row justify-content-center">
+                    <div class="col-6">
+                        <!--show errors-->
+                        <?php if (!empty($validation_errors)) : ?>
+                            <div class="alert alert-danger p-2 my-2 text-center">
+                                <?php foreach ($validation_errors as $error) : ?>
+                                    <div><?= $error ?></div>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>

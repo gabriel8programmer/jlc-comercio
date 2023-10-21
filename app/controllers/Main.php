@@ -8,12 +8,6 @@ use jlc_comercio\Models\Users;
 class Main extends BaseController {
 
     public function index(){
-
-        //display login form
-        $this->view('layouts/html_header');
-        $this->view("dashboard_PDV");
-        $this->view("layouts/html_footer");
-        return;
        
         //check if there is no active user in session
         if (!check_session()){
@@ -72,9 +66,6 @@ class Main extends BaseController {
         $username = $_POST["input_user"];
         $password = $_POST["input_password"];
 
-        //validation for the username
-        //validation for the password
-
         //check if there are validation errors
         if (!empty($validation_errors)){
             $_SESSION["validation_errors"] = $validation_errors;
@@ -82,12 +73,14 @@ class Main extends BaseController {
             return;
         }
 
+        //success case
         $model = new Users();
         $results = $model->check_login($username, $password);
+
         if ($results["status"]){
-            echo "OK!";
+           echo "OK";
         } else {
-            echo "NOK!";
+            echo "NOK";
         }
     }
 }
