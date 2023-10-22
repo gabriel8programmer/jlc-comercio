@@ -46,4 +46,18 @@
   color: #f47600;
 }
 
+.my-modal {
+  background-color: #F1F9FD;
+}
+.my-modal #header {
+  background-color: #329dc7;
+}
+.my-modal input, .my-modal textarea, .my-modal select {
+  border: 1px solid #329dc7;
+}
+
+#modal_new_product #product-img {
+  height: 289px;
+}
+
 /*# sourceMappingURL=app.css.map */
