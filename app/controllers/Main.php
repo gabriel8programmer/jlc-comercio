@@ -8,6 +8,12 @@ use jlc_comercio\Models\Users;
 class Main extends BaseController {
 
     public function index(){
+
+        $this->view("layouts/html_header");
+        $this->view("dashboard_PDV");
+        $this->view("layouts/html_footer");
+
+        return;
        
         //check if there is no active user in session
         if (!check_session()){
