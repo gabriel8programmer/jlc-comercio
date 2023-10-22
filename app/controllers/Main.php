@@ -10,7 +10,7 @@ class Main extends BaseController {
     public function index(){
 
         $this->view("layouts/html_header");
-        $this->view("dashboard_PDV");
+        $this->view("header_navbar");
         $this->view("layouts/html_footer");
 
         return;

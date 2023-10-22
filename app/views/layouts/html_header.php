@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= APP_NAME ?></title>
+    <!--favicon-->
+    <link rel="shortcut icon" href="./assets/images/logo-small.png" type="image/x-icon">
     <!--bootstrap-->
     <link rel="stylesheet" href="./assets/bootstrap/bootstrap.min.css">
     <!--fontawesome-->

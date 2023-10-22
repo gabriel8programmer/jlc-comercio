@@ -1,11 +1,11 @@
-<main class="container">
+<main class="container-fluid">
 
     <!--dashboard statistics-->
     <section class="row my-3 g-3">
         <h4>QUADRO DE ESTATÍSTICAS</h4>
 
         <!--total products-->
-        <div class="col-12 col-sm-6 col-md-6 col-xl-3">
+        <div class="col-sm-6 col-lg-3">
             <div class="border border-dark p-3">
                 <div class="row align-items-end justify-content-between ">
                     <div class="col-1">
@@ -24,7 +24,7 @@
         </div>
 
         <!--stock low-->
-        <div class="col-12 col-sm-6 col-md-6 col-xl-3">
+        <div class="col-sm-6 col-lg-3">
             <div class="border border-dark p-3">
                 <div class="row align-items-end justify-content-between">
                     <div class="col-1">
@@ -43,7 +43,7 @@
         </div>
 
         <!--total suppliers-->
-        <div class="col-12 col-sm-6 col-md-6 col-xl-3">
+        <div class="col-sm-6 col-lg-3">
             <div class="border border-dark p-3">
                 <div class="row align-items-end justify-content-between">
                     <div class="col-1">
@@ -62,7 +62,7 @@
         </div>
 
         <!--total sells of the day-->
-        <div class="col-12 col-sm-6 col-md-6 col-xl-3">
+        <div class="col-sm-6 col-lg-3">
             <div class="border border-dark p-3">
                 <div class="row align-items-end justify-content-between">
                     <div class="col-1">
@@ -83,7 +83,7 @@
         </div>
 
         <!---->
-        <div class="col-12 col-sm-6 col-md-6 col-xl-3">
+        <div class="col-sm-6 col-lg-3">
             <div class="border border-dark p-3">
                 <div class="row align-items-end justify-content-between">
                     <div class="col-1">
@@ -103,7 +103,7 @@
         </div>
 
         <!---->
-        <div class="col-12 col-sm-6 col-md-6 col-xl-3">
+        <div class="col-sm-6 col-lg-3">
             <div class="border border-dark p-3">
                 <div class="row align-items-end justify-content-between">
                     <div class="col-1">
@@ -123,7 +123,7 @@
         </div>
 
         <!---->
-        <div class="col-12 col-sm-6 col-md-6 col-xl-3">
+        <div class="col-sm-6 col-lg-3">
             <div class="border border-dark p-3">
                 <div class="row align-items-end justify-content-between">
                     <div class="col-1">
@@ -143,7 +143,7 @@
         </div>
 
         <!---->
-        <div class="col-12 col-sm-6 col-md-6 col-xl-3">
+        <div class="col-sm-6 col-lg-3">
             <div class="border border-dark p-3">
                 <div class="row align-items-end justify-content-between">
                     <div class="col-1">

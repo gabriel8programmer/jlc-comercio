@@ -1,3 +1,6 @@
+<button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal_new_product">
+    Novo Produto
+</button>
 <div class="modal fade" id="modal_new_product" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl modal-fullscreen-sm-down">
         <div class="my-modal modal-content border border-primary" style="background-color: #F1F9FD;">
