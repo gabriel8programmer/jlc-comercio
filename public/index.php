@@ -7,3 +7,6 @@ require_once("../vendor/autoload.php");
 
 //calling the method dispatch in Router
 Router::dispatch();
+
+
+

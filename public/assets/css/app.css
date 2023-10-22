@@ -21,7 +21,7 @@
   height: 73px;
 }
 #login #form-login {
-  background: linear-gradient(to right, rgba(50, 157, 199, 0.4), rgba(11, 13, 69, 0.2), rgba(11, 13, 69, 0.5));
+  background: linear-gradient(to right, rgba(11, 13, 69, 0.7), rgba(11, 13, 69, 0.5), rgba(11, 13, 69, 0.3));
 }
 #login #form-login #icon-user {
   width: 85px;
