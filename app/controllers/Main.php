@@ -9,12 +9,6 @@ class Main extends BaseController {
 
     public function index(){
 
-        $this->view("layouts/html_header");
-        $this->view("header_navbar");
-        $this->view("layouts/html_footer");
-
-        return;
-       
         //check if there is no active user in session
         if (!check_session()){
             $this->login_frm();
@@ -84,7 +78,7 @@ class Main extends BaseController {
         $results = $model->check_login($username, $password);
 
         if ($results["status"]){
-           echo "OK";
+            echo "OK";
         } else {
             echo "NOK";
         }

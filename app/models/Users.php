@@ -14,12 +14,9 @@ class Users extends BaseModel
 
         //check if there is a user in the database
         $this->db_connect();
-        $results = $this->query("SELECT id, `password` 
-        FROM users 
-        WHERE :username = `name`"
-        , $params);
+        $results = $this->query("SELECT id, password FROM users
+         WHERE AES_ENCRYPT(:username, '". MYSQL_AES_KEY . "') = name", $params);
 
-        
         //if there is no user, returns false
         if ($results->affected_rows == 0){
             return [
@@ -27,16 +24,9 @@ class Users extends BaseModel
             ];
         }
         
-        
         // there is a user with that name (username)
         // check if the password is correct
-        // if (!password_verify($password, $results->results[0]->password)){
-        //     return [
-        //         "status" => false,
-        //     ];
-        // }
-
-        if ($results->results[0]->password != $password){
+        if (!password_verify($password, $results->results[0]->password)){
             return [
                 "status" => false
             ];
@@ -44,7 +34,7 @@ class Users extends BaseModel
 
         //login is ok
         return [
-            "status" => true
+            "status" => true,
         ];
     }
 }

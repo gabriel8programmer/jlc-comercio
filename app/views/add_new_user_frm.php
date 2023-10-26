@@ -27,7 +27,7 @@
                         <div class="col-12 col-md-4 col-lg-3">
                             <div class="form-floating">
                                 <input type="text" name="input_contact" id="contact" placeholder="contact" required class="form-control">
-                                <label for="contact" class="form-label">Contato do Usuário</label>
+                                <label for="contact" class="form-label">Contato</label>
                             </div>
                         </div>
                     </div>
@@ -49,7 +49,11 @@
                                 </div>
                                 <div class="col-12 col-sm-4 col-lg-5">
                                     <div class="form-floating">
-                                        <input type="text" name="input_level" id="level" placeholder="level" required class="form-control">
+                                        <select name="select_level" id="level" placeholder="Nível" required class="form-select">
+                                            <option value="admin">Administrador</option>
+                                            <option value="tesoureiro">Tesoureiro</option>
+                                            <option value="operador">Operador</option>
+                                        </select>
                                         <label for="level" class="form-label">Nível</label>
                                     </div>
                                 </div>
