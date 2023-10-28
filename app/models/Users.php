@@ -37,4 +37,20 @@ class Users extends BaseModel
             "status" => true,
         ];
     }
+
+    public function get_user_data($username){
+
+        //get all params in the current user
+        $params = [
+            ":username" => $username
+        ];
+
+        //get all necessary datas in the user
+        $results = $this->query("SELECT id, AES_DECRYPT(name, '" . MYSQL_AES_KEY . "') name, profile FROM users WHERE AES_ENCRYPT(:username, '" . MYSQL_AES_KEY . "') = name", $params);
+
+        return [
+            "status" => "success",
+            "data" => $results->results[0]
+        ];
+    }
 }

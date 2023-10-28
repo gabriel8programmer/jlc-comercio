@@ -7,11 +7,6 @@
   text-decoration: none;
 }
 
-@media (max-width: 991px) {
-  #navbar-icon-user {
-    display: none;
-  }
-}
 #login #range {
   height: 78px;
   background-color: #0b0d45;

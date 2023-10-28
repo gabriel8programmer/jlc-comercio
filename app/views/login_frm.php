@@ -58,12 +58,19 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-6">
-                        <!--show errors-->
+                        <!--show validation errors-->
                         <?php if (!empty($validation_errors)) : ?>
                             <div class="alert alert-danger p-2 my-2 text-center">
                                 <?php foreach ($validation_errors as $error) : ?>
                                     <div><?= $error ?></div>
                                 <?php endforeach; ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <!--show server errors-->
+                        <?php if (!empty($server_error)) : ?>
+                            <div class="alert alert-danger p-2 my-2 text-center">
+                                <div><?= $server_error ?></div>
                             </div>
                         <?php endif; ?>
                     </div>

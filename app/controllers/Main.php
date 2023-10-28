@@ -15,8 +15,12 @@ class Main extends BaseController {
             return;
         }
 
+        //load data
+        $data["user"] = $_SESSION["user"];
+
         $this->view("layouts/html_header");
-        echo "<h3 class='text-danger'>principal</h3>";
+        $this->view("header_navbar", $data);
+        $this->view("homepage", $data);
         $this->view("layouts/html_footer");
     }
 
@@ -28,11 +32,18 @@ class Main extends BaseController {
             return;
         }
 
-        //check if there are erros (after login_submit)
         $data = [];
+
+        //check if there was a validation errors
         if (!empty($_SESSION["validation_errors"])){
             $data["validation_errors"] = $_SESSION["validation_errors"];
             unset($_SESSION["validation_errors"]);
+        }
+
+        //check if there was a server errors
+        if (!empty($_SESSION["server_error"])){
+            $data["server_error"] = $_SESSION["server_error"];
+            unset($_SESSION["server_error"]);
         }
 
         //display login form
@@ -77,16 +88,26 @@ class Main extends BaseController {
         $model = new Users();
         $results = $model->check_login($username, $password);
 
-        if ($results["status"]){
-            echo "OK";
-        } else {
-            echo "NOK";
+        if (!$results["status"]){
+            //invalid login
+            $_SESSION["server_error"] = "Login Inválido";
+            $this->login_frm();
+            return;
         }
+
+        //load data user
+        $results = $model->get_user_data($username);
+
+        //create the session user
+        $_SESSION["user"] = $results["data"];
+
+        //return the index
+        $this->index();
+    }
+
+    public function logout(){
+        unset($_SESSION["user"]);
+        $this->index();
+        return;
     }
 }
-
-/*
-usuário 1 => 11111
-usuário 2 => 22222
-usuário 3 => 33333
-*/

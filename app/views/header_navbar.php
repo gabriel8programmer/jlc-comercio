@@ -10,7 +10,7 @@
             <nav class="navbar navbar-expand-lg">
 
                 <!-- home -->
-                <a class="navbar-brand text-light" href="#">
+                <a class="navbar-brand text-light" href="?ct=main&mt=index">
                     <i class="fa-solid fa-home"></i>
                     Home
                 </a>
@@ -97,14 +97,14 @@
                             <div style="width: 40px; height: 40px;">
                                 <img src="./assets/images/icon-user.png" alt="icone de usuário" class="img-fluid">
                             </div>
-                            Administrador
+                            <?= $user->name ?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
                             <li><a class="dropdown-item text-light" href="#">Editar Perfil</a></li>
                             <li>
                                 <hr class="dropdown-divider text-light">
                             </li>
-                            <li><a class="dropdown-item text-light" href="#">Sair</a></li>
+                            <li><a class="dropdown-item text-light" href="?ct=main&mt=logout">Sair</a></li>
                         </ul>
                     </div>
                 </div>
