@@ -19,7 +19,7 @@ class Main extends BaseController {
         $data["user"] = $_SESSION["user"];
 
         $this->view("layouts/html_header");
-        $this->view("header_navbar", $data);
+        $this->view("header-navbar", $data);
         $this->view("homepage", $data);
         $this->view("layouts/html_footer");
     }
@@ -48,7 +48,7 @@ class Main extends BaseController {
 
         //display login form
         $this->view('layouts/html_header');
-        $this->view("login_frm", $data);
+        $this->view("login-frm", $data);
         $this->view("layouts/html_footer");
     }
 
@@ -89,11 +89,17 @@ class Main extends BaseController {
         $results = $model->check_login($username, $password);
 
         if (!$results["status"]){
+            //logger
+            logger("$username - login inválido", "error");
+
             //invalid login
             $_SESSION["server_error"] = "Login Inválido";
             $this->login_frm();
             return;
         }
+
+        //logger
+        logger("$username - Login com sucesso");
 
         //load data user
         $results = $model->get_user_data($username);
@@ -106,7 +112,18 @@ class Main extends BaseController {
     }
 
     public function logout(){
+
+        //disable direct access to logout
+        if (!check_session()){
+            $this->index();
+            return;
+        }
+
+        //logger
+        logger($_SESSION["user"]->name . " - fez logout");
+        //clear user session
         unset($_SESSION["user"]);
+        //back in the method index
         $this->index();
         return;
     }

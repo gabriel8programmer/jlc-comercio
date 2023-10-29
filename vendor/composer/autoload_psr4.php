@@ -9,4 +9,6 @@ return array(
     'jlc_comercio\\System\\' => array($baseDir . '/app/system'),
     'jlc_comercio\\Models\\' => array($baseDir . '/app/models'),
     'jlc_comercio\\Controllers\\' => array($baseDir . '/app/controllers'),
+    'Psr\\Log\\' => array($vendorDir . '/psr/log/src'),
+    'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
 );

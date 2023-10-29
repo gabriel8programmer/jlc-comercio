@@ -53,4 +53,21 @@ class Users extends BaseModel
             "data" => $results->results[0]
         ];
     }
+
+    public function load_all_data(){
+        //get all necessary datas in the user
+        $this->db_connect();
+        $results = $this->query("SELECT id,".
+        "AES_DECRYPT(cpf, '" . MYSQL_AES_KEY . "') cpf,".
+        "AES_DECRYPT(name, '" . MYSQL_AES_KEY . "') name,".
+        "AES_DECRYPT(phone, '" . MYSQL_AES_KEY . "') phone,". 
+        "AES_DECRYPT(email, '" . MYSQL_AES_KEY . "') email,". 
+        "password, profile ". 
+        "FROM users");
+
+        return [
+            "status" => "success",
+            "data" => $results->results
+        ];
+    }
 }

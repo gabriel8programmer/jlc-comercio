@@ -1,5 +1,8 @@
 <?php
 
+//init system session
+session_start();
+
 use jlc_comercio\System\Router;
 
 //import all packages and extensions for the project

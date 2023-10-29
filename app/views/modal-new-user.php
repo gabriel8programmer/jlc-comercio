@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="#" method="post">
+                <form action="?ct=user&mt=add_user" method="post">
                     <div class="row g-2 my-2">
                         <div class="col-12 col-md-4 col-lg-3">
                             <div class="form-floating">

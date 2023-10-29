@@ -44,28 +44,31 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>000.000.000-00</td>
-                            <td>usuario teste</td>
-                            <td>(00) 0 0000 - 0000</td>
-                            <td>usuarioteste@gmail.com</td>
-                            <td>123</td>
-                            <td>Administrador</td>
-                            <td>
-                                <div class="row">
-                                    <div class="col-2">
-                                        <a href="#" class="text-primary fs-6">
-                                            <i class="fa-solid fa-edit"></i>
-                                        </a>
+
+                        <?php foreach ($users as $user) : ?>
+                            <tr>
+                                <td>$user->cpf</td>
+                                <td>$user->name</td>
+                                <td>$user->phone</td>
+                                <td>$user->email</td>
+                                <td>$user->password</td>
+                                <td>$user->profile</td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <a href="#" class="text-primary fs-6">
+                                                <i class="fa-solid fa-edit"></i>
+                                            </a>
+                                        </div>
+                                        <div class="col-2">
+                                            <a href="#" class="text-danger fs-6">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </a>
+                                        </div>
                                     </div>
-                                    <div class="col-2">
-                                        <a href="#" class="text-danger fs-6">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </small>

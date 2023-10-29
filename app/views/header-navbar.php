@@ -29,7 +29,7 @@
                                 Cadastro
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Usuários</a></li>
+                                <li><a class="dropdown-item" href="?ct=user&mt=load_users">Usuários</a></li>
                                 <li><a class="dropdown-item" href="#">Fornecedores</a></li>
                                 <li><a class="dropdown-item" href="#">Caixas</a></li>
                                 <li><a class="dropdown-item" href="#">Formas de Pagamento</a></li>
@@ -84,11 +84,11 @@
                         </li>
 
                         <!--panel treasure-->
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="#" class="nav-link text-light" target="_blank">
                                 Painel Tesouraria 
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
 
                     <!-- current user -->
@@ -97,7 +97,7 @@
                             <div style="width: 40px; height: 40px;">
                                 <img src="./assets/images/icon-user.png" alt="icone de usuário" class="img-fluid">
                             </div>
-                            <?= $user->name ?>
+                            <?=  ucfirst($user->name) ?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
                             <li><a class="dropdown-item text-light" href="#">Editar Perfil</a></li>

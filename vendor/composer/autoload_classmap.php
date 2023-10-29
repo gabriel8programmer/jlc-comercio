@@ -7,9 +7,4 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
-    'jlc_comercio\\Controllers\\BaseController' => $baseDir . '/app/controllers/BaseController.php',
-    'jlc_comercio\\Controllers\\Main' => $baseDir . '/app/controllers/Main.php',
-    'jlc_comercio\\Models\\BaseModel' => $baseDir . '/app/models/BaseModel.php',
-    'jlc_comercio\\System\\Database' => $baseDir . '/app/system/Database.php',
-    'jlc_comercio\\System\\Router' => $baseDir . '/app/system/Router.php',
 );

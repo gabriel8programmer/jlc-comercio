@@ -11,3 +11,6 @@ define("MYSQL_PASSWORD", "123");
 
 //mysql encriptation key
 define("MYSQL_AES_KEY", "G4dlWjV38dHQSuRxhaWYR6tVkMkDdBH8");
+
+//logs 
+define("LOGS_PATH", __DIR__. "/../logs/app.log");

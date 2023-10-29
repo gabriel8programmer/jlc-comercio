@@ -7,7 +7,9 @@
             "name": "Gabriel Pereira"
         }
     ],
-    "require": {},
+    "require": {
+        "monolog/monolog": "^3.5"
+    },
     "autoload": {
         "psr-4": {
             "jlc_comercio\\Controllers\\": ["app/controllers"],

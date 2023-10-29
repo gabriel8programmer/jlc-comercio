@@ -18,6 +18,14 @@ class ComposerStaticInit9c944151c5b3a80cfe31e3e038b1e186
             'jlc_comercio\\Models\\' => 20,
             'jlc_comercio\\Controllers\\' => 25,
         ),
+        'P' => 
+        array (
+            'Psr\\Log\\' => 8,
+        ),
+        'M' => 
+        array (
+            'Monolog\\' => 8,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -33,15 +41,18 @@ class ComposerStaticInit9c944151c5b3a80cfe31e3e038b1e186
         array (
             0 => __DIR__ . '/../..' . '/app/controllers',
         ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/src',
+        ),
+        'Monolog\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
     );
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'jlc_comercio\\Controllers\\BaseController' => __DIR__ . '/../..' . '/app/controllers/BaseController.php',
-        'jlc_comercio\\Controllers\\Main' => __DIR__ . '/../..' . '/app/controllers/Main.php',
-        'jlc_comercio\\Models\\BaseModel' => __DIR__ . '/../..' . '/app/models/BaseModel.php',
-        'jlc_comercio\\System\\Database' => __DIR__ . '/../..' . '/app/system/Database.php',
-        'jlc_comercio\\System\\Router' => __DIR__ . '/../..' . '/app/system/Router.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
