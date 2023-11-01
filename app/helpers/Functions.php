@@ -3,9 +3,9 @@
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
-//simple function what to check if exists a user in the session
+//simple function what to check if exists a login
 function check_session(){
-    return isset($_SESSION["user"]);
+    return isset($_SESSION["login"]);
 }
 
 //this function create the log in the app

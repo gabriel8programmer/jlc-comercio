@@ -16,7 +16,7 @@ class Main extends BaseController {
         }
 
         //load data
-        $data["user"] = $_SESSION["user"];
+        $data["login"] = $_SESSION["login"];
 
         $this->view("layouts/html_header");
         $this->view("header-navbar", $data);
@@ -105,7 +105,7 @@ class Main extends BaseController {
         $results = $model->get_user_data($username);
 
         //create the session user
-        $_SESSION["user"] = $results["data"];
+        $_SESSION["login"] = $results["data"];
 
         //return the index
         $this->index();
@@ -120,9 +120,9 @@ class Main extends BaseController {
         }
 
         //logger
-        logger($_SESSION["user"]->name . " - fez logout");
+        logger($_SESSION["login"]->name . " - fez logout");
         //clear user session
-        unset($_SESSION["user"]);
+        unset($_SESSION["login"]);
         //back in the method index
         $this->index();
         return;

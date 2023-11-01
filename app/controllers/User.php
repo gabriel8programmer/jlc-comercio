@@ -7,7 +7,7 @@ use jlc_comercio\Models\Users;
 
 class User extends BaseController {
 
-    public function load_users(){
+    public function get_users(){
 
         //check if exists a user session
         if (!check_session()){
@@ -18,7 +18,7 @@ class User extends BaseController {
         $model = new Users();
         $results = $model->load_all_data();
        
-        $data["user"] = $_SESSION["user"];
+        $data["login"] = $_SESSION["login"];
         $data["users"] = $results["data"];
 
         //load users
@@ -27,5 +27,13 @@ class User extends BaseController {
         $this->view("panel-users", $data);
         $this->view("modal-new-user");
         $this->view("layouts/html_footer");
+    }
+    
+    public function edit_user($id){
+
+    }
+
+    public function delete_user($id){
+
     }
 }
