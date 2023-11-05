@@ -11,13 +11,13 @@
 
                 <!-- home -->
                 <a class="navbar-brand text-light" href="?ct=main&mt=index">
-                    <i class="fa-solid fa-home"></i>
-                    Home
+                <i class="bi bi-house-door-fill"></i>
+                Home
                 </a>
 
                 <!-- list button -->
                 <button class="navbar-toggler text-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa-solid fa-bars"></i>
+                    <i class="bi bi-list"></i>
                 </button>
 
                 <!-- container with all dashboards -->
@@ -29,7 +29,7 @@
                                 Cadastro
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="?ct=user&mt=get_users">Usuários</a></li>
+                                <li><a class="dropdown-item" href="?ct=user&mt=load_users">Usuários</a></li>
                                 <li><a class="dropdown-item" href="#">Fornecedores</a></li>
                                 <li><a class="dropdown-item" href="#">Caixas</a></li>
                                 <li><a class="dropdown-item" href="#">Formas de Pagamento</a></li>
@@ -97,7 +97,7 @@
                             <div style="width: 40px; height: 40px;">
                                 <img src="./assets/images/icon-user.png" alt="icone de usuário" class="img-fluid">
                             </div>
-                            <?=  ucfirst($login->name) ?>
+                            <?= ucfirst($login->name) ?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
                             <li><a class="dropdown-item text-light" href="#">Editar Perfil</a></li>

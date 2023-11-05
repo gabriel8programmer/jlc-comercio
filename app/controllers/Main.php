@@ -10,7 +10,7 @@ class Main extends BaseController {
     public function index(){
 
         //check if there is no active user in session
-        if (!check_session()){
+        if (!check_login()){
             $this->login_frm();
             return;
         }
@@ -27,7 +27,7 @@ class Main extends BaseController {
     //function for the to show the form login
     public function login_frm(){
         //check if there is a user in the session
-        if (check_session()){
+        if (check_login()){
             $this->index();
             return;
         }
@@ -56,7 +56,7 @@ class Main extends BaseController {
     public function login_submit(){
 
          //check if there is a user in the session
-         if (check_session()){
+         if (check_login()){
             $this->index();
             return;
         }
@@ -114,7 +114,7 @@ class Main extends BaseController {
     public function logout(){
 
         //disable direct access to logout
-        if (!check_session()){
+        if (!check_login()){
             $this->index();
             return;
         }

@@ -2,8 +2,13 @@
 .my-modal {
     background-color: $bg-modals;
 
-    #header {
+    #header{
         background-color: $bg-primary;
+        color: #fff;
+
+        button {
+            color: #fff;
+        }
     }
 
     input, textarea, select{

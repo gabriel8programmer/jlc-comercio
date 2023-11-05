@@ -9,8 +9,8 @@
     <link rel="shortcut icon" href="./assets/images/logo-small.png" type="image/x-icon">
     <!--bootstrap-->
     <link rel="stylesheet" href="./assets/bootstrap/bootstrap.min.css">
-    <!--fontawesome-->
-    <script src="./assets/fontawesome/fontawesome.min.js"></script>
+    <!--bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <!--custom css-->
     <link rel="stylesheet" href="./assets/css/app.css">
 </head>

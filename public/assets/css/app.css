@@ -46,6 +46,10 @@
 }
 .my-modal #header {
   background-color: #329dc7;
+  color: #fff;
+}
+.my-modal #header button {
+  color: #fff;
 }
 .my-modal input, .my-modal textarea, .my-modal select {
   border: 1px solid #329dc7;

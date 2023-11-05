@@ -4,7 +4,7 @@ use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
 //simple function what to check if exists a login
-function check_session(){
+function check_login(){
     return isset($_SESSION["login"]);
 }
 
