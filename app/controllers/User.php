@@ -20,7 +20,7 @@ class User extends BaseController
         //load users
         $this->view("layouts/html_header");
         $this->view("header-navbar", $data);
-        $this->view("panel-users", $data);
+        $this->view("user/panel-users", $data);
         $this->view("layouts/html_footer");
     }
 
