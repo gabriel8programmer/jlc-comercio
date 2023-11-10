@@ -60,13 +60,13 @@
                                 <td>
                                     <div class="row">
                                         <div class="col-2">
-                                            <a href="?ct=user&mt=edit_user&id=<?= $user->id ?>" class="text-primary fs-6">
+                                            <a href="#modal-edit-user-<?= $user->id ?>" class="text-primary fs-6">
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>
                                         </div>
                                         <div class="col-2">
-                                            <a href="?ct=user&mt=remove_user&id=<?= $user->id ?>" class="text-primary fs-6">
-                                                <i class=" bi bi-trash3-fill text-danger fs-6"></i>
+                                            <a href="#modal-remove-user" class="text-primary fs-6" data-bs-toggle="modal">
+                                                <i class="bi bi-trash3-fill text-danger fs-6"></i>
                                             </a>
                                         </div>
                                     </div>

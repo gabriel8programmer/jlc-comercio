@@ -10,8 +10,14 @@
                 <p>Deseja Realmente Excluir este Registro?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-danger">Excluir</button>
+                <?php foreach($users as $user): ?>
+                    <form action="#">
+                        <form action="?ct=user&mt=remove_user&id=<?= $user->id ?>" method="get">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            <button type="submit" class="btn btn-danger">Excluir</button>
+                        </form>
+                    </form>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>

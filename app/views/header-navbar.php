@@ -29,7 +29,7 @@
                                 Cadastro
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="?ct=user&mt=load_users">Usuários</a></li>
+                                <li><a class="dropdown-item" href="?ct=user&mt=index">Usuários</a></li>
                                 <li><a class="dropdown-item" href="#">Fornecedores</a></li>
                                 <li><a class="dropdown-item" href="#">Caixas</a></li>
                                 <li><a class="dropdown-item" href="#">Formas de Pagamento</a></li>

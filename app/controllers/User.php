@@ -8,7 +8,7 @@ use jlc_comercio\Models\Users;
 class User extends BaseController
 {
 
-    public function load_users()
+    public function index()
     {
         //load all data for the users's panel
         $model = new Users();
@@ -20,7 +20,10 @@ class User extends BaseController
         //load users
         $this->view("layouts/html_header");
         $this->view("header-navbar", $data);
-        $this->view("user/panel-users", $data);
+        $this->view("users-table", $data);
+        $this->view("modal-add-new-user", $data);
+        $this->view("modal-edit-user", $data);
+        $this->view("modal-remove-user", $data);
         $this->view("layouts/html_footer");
     }
 
@@ -46,7 +49,7 @@ class User extends BaseController
         $model = new Users();
         $results = $model->insert_new_user($params);
 
-        $this->load_users();
+        $this->index();
     }
 
     public function edit_user($id)
@@ -60,10 +63,12 @@ class User extends BaseController
             return;
         }
 
+        printData($id);
+
         $model = new Users();
         $results = $model->delete_user($id);
 
-        $this->load_users();
+        $this->index();
     }
 
 }
