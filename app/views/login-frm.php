@@ -20,7 +20,7 @@
                     </div>
 
                     <!--form login-->
-                    <form action="?ct=main&mt=login_submit" method="post" class="p-3 rounded-4" id="form-login">
+                    <form action="?ct=main&mt=login_submit" method="post" class="p-3 rounded-4" id="form-login" novalidate>
 
                         <!--title-->
                         <div class="text-center">
@@ -54,28 +54,26 @@
                             <input type="button" value="Cancelar" class="btn btn-transparent border-0 outline-0 text-light" name="inputCancel">
                         </div>
                     </form>
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <!--show validation errors-->
+                            <?php if (!empty($validation_errors)) : ?>
+                                <div class="alert alert-danger p-2 my-2 text-center">
+                                    <?php foreach ($validation_errors as $error) : ?>
+                                        <div><?= $error ?></div>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endif; ?>
 
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-6">
-                        <!--show validation errors-->
-                        <?php if (!empty($validation_errors)) : ?>
-                            <div class="alert alert-danger p-2 my-2 text-center">
-                                <?php foreach ($validation_errors as $error) : ?>
-                                    <div><?= $error ?></div>
-                                <?php endforeach; ?>
-                            </div>
-                        <?php endif; ?>
-
-                        <!--show server errors-->
-                        <?php if (!empty($server_error)) : ?>
-                            <div class="alert alert-danger p-2 my-2 text-center">
-                                <div><?= $server_error ?></div>
-                            </div>
-                        <?php endif; ?>
+                            <!--show server errors-->
+                            <?php if (!empty($server_error)) : ?>
+                                <div class="alert alert-danger p-2 my-2 text-center">
+                                    <div><?= $server_error ?></div>
+                                </div>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>

@@ -100,7 +100,7 @@
                             <?= ucfirst($login->name) ?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item text-light" href="#">Editar Perfil</a></li>
+                            <li><a class="dropdown-item text-light" href="#modal-edit-profile" data-bs-toggle="modal">Editar Perfil</a></li>
                             <li>
                                 <hr class="dropdown-divider text-light">
                             </li>

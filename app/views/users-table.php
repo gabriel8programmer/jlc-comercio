@@ -2,9 +2,9 @@
 
     <div class="row my-2">
         <div class="col">
-            <a href="?ct=user&mt=add_new_user" class="btn btn-secondary">
+            <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modal-add-new-user">
                 Novo Usuário
-            </a>
+            </button>
         </div>
     </div>
 
@@ -60,7 +60,7 @@
                                 <td>
                                     <div class="row">
                                         <div class="col-2">
-                                            <a href="#modal-edit-user-<?= $user->id ?>" class="text-primary fs-6">
+                                            <a href="#modal-edit-user" class="text-primary fs-6" data-bs-toggle="modal">
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>
                                         </div>

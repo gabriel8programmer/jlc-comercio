@@ -10,6 +10,10 @@ class User extends BaseController
 
     public function index()
     {
+        if (!check_login()){
+            return header("Location: index.php");
+        }
+
         //load all data for the users's panel
         $model = new Users();
         $results = $model->load_all_data();
@@ -21,9 +25,9 @@ class User extends BaseController
         $this->view("layouts/html_header");
         $this->view("header-navbar", $data);
         $this->view("users-table", $data);
-        $this->view("modal-add-new-user", $data);
-        $this->view("modal-edit-user", $data);
-        $this->view("modal-remove-user", $data);
+        $this->view("modal-add-new-user");
+        $this->view("modal-edit-user");
+        $this->view("modal-remove-user");
         $this->view("layouts/html_footer");
     }
 
@@ -47,7 +51,7 @@ class User extends BaseController
 
         //to instacitate the class users
         $model = new Users();
-        $results = $model->insert_new_user($params);
+        $results = $model->insert($params);
 
         $this->index();
     }
@@ -63,10 +67,8 @@ class User extends BaseController
             return;
         }
 
-        printData($id);
-
         $model = new Users();
-        $results = $model->delete_user($id);
+        $results = $model->delete($id);
 
         $this->index();
     }

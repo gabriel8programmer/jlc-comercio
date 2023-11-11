@@ -73,7 +73,7 @@ class Users extends BaseModel
         ];
     }
 
-    public function insert_new_user($params){
+    public function insert($params){
         $this->db_connect();
         $results = $this->non_query(
             "INSERT INTO users VALUES ( 0, " . 
@@ -94,7 +94,24 @@ class Users extends BaseModel
         ];
     }
 
-    public function delete_user($id){
+    public function update($params){
+     
+        $this->db_connect();
+        $results = $this->non_query("UPDATE name, cpf, email, password FROM users SET " .
+        "AES_ENCRYPT(:name, '". MYSQL_AES_KEY ."'), " .
+        "AES_ENCRYPT(:cpf, '". MYSQL_AES_KEY ."'), " .
+        "AES_ENCRYPT(:email, '". MYSQL_AES_KEY ."'), " .
+        "AES_ENCRYPT(:password, '". MYSQL_AES_KEY ."'), " .
+        "WHERE id = :id");
+
+        return [
+            "status" => "success",
+            "data" => $results->results
+        ];
+
+    }
+
+    public function delete($id){
         $params = [
             ":id" => $id
         ];

@@ -127,4 +127,8 @@ class Main extends BaseController {
         $this->index();
         return;
     }
+
+    public function edit_profile($id){
+
+    }
 }
