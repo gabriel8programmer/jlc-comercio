@@ -9,45 +9,45 @@
 
     <!--first row-->
     <div class="row gx-4 px-3">
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="border rounded p-4 d-flex align-items-center justify-content-between" style="border rounded: #aaa;">
-                <div>
+                <div class="me-3">
                     <i class="bi bi-bar-chart-fill fs-1 text-success"></i>
                 </div>
-                <div class="d-flex flex-column align-items-end">
+                <div class="d-flex flex-column align-items-end text-end">
                     <strong class="fs-4">0</strong>
                     <span class="fs-6">Total de Produtos</span>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="border rounded p-4 d-flex align-items-center justify-content-between" style="border rounded: #aaa;">
-                <div>
+                <div class="me-3">
                     <i class="bi bi-bar-chart-fill fs-1 text-danger"></i>
                 </div>
-                <div class="d-flex flex-column align-items-end">
+                <div class="d-flex flex-column align-items-end text-end">
                     <strong class="fs-4">0</strong>
                     <span class="fs-6">Estoque Baixo</span>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="border rounded p-4 d-flex align-items-center justify-content-between" style="border rounded: #aaa;">
-                <div>
+                <div class="me-3">
                     <i class="bi bi-bar-chart-fill fs-1 text-dark"></i>
                 </div>
-                <div class="d-flex flex-column align-items-end">
+                <div class="d-flex flex-column align-items-end text-end">
                     <strong class="fs-4">0</strong>
                     <span class="fs-6">Total de Fornecedores</span>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="border rounded p-4 d-flex align-items-center justify-content-between" style="border rounded: #aaa;">
-                <div>
+                <div class="me-3">
                     <i class="bi bi-cash fs-1 text-success"></i>
                 </div>
-                <div class="d-flex flex-column align-items-end">
+                <div class="d-flex flex-column align-items-end text-end">
                     <strong class="fs-4">0</strong>
                     <span class="fs-6">Total Vendas do Dia</span>
                 </div>
@@ -57,45 +57,45 @@
 
     <!--secondary row-->
     <div class="row gx-4 px-3 my-4">
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="border rounded p-4 d-flex align-items-center justify-content-between" style="border rounded: #aaa;">
-                <div>
+                <div class="me-3">
                     <i class="bi bi-calendar2-check-fill fs-1 text-warning"></i>
                 </div>
-                <div class="d-flex flex-column align-items-end">
+                <div class="d-flex flex-column align-items-end text-end">
                     <strong class="fs-4">0</strong>
                     <span class="fs-6">Contas a Pagar</span>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="border rounded p-4 d-flex align-items-center justify-content-between" style="border rounded: #aaa;">
-                <div>
+                <div class="me-3">
                     <i class="bi bi-calendar2-x-fill fs-1 text-danger"></i>
                 </div>
-                <div class="d-flex flex-column align-items-end">
+                <div class="d-flex flex-column align-items-end text-end">
                     <strong class="fs-4">0</strong>
                     <span class="fs-6">Contas a Pagar Vencidas</span>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="border rounded p-4 d-flex align-items-center justify-content-between" style="border rounded: #aaa;">
-                <div>
+                <div class="me-3">
                     <i class="bi bi-calendar2-check-fill fs-1 text-warning"></i>
                 </div>
-                <div class="d-flex flex-column align-items-end">
+                <div class="d-flex flex-column align-items-end text-end">
                     <strong class="fs-4">0</strong>
                     <span class="fs-6">Contas Receber(Hoje)</span>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="border rounded p-4 d-flex align-items-center justify-content-between" style="border rounded: #aaa;">
-                <div>
+                <div class="me-3">
                     <i class="bi bi-calendar2-x-fill fs-1 text-danger"></i>
                 </div>
-                <div class="d-flex flex-column align-items-end">
+                <div class="d-flex flex-column align-items-end text-end">
                     <strong class="fs-4">0</strong>
                     <span class="fs-6">Contas à Receber Vencidas</span>
                 </div>
@@ -105,45 +105,45 @@
 
     <!--third row-->
     <div class="row gx-4 px-3">
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="border rounded p-4 d-flex align-items-center justify-content-between" style="border rounded: #aaa;">
-                <div>
+                <div class="me-3">
                     <i class="bi bi-exclamation-triangle-fill fs-1 text-danger"></i>
                 </div>
-                <div class="d-flex flex-column align-items-end">
+                <div class="d-flex flex-column align-items-end text-end">
                     <strong class="fs-4">0</strong>
                     <span class="fs-6">Produtos Vencendo</span>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="border rounded p-4 d-flex align-items-center justify-content-between" style="border rounded: #aaa;">
-                <div>
+                <div class="me-3">
                     <i class="bi bi-cash fs-1 text-danger"></i>
                 </div>
-                <div class="d-flex flex-column align-items-end">
+                <div class="d-flex flex-column align-items-end text-end">
                     <strong class="fs-4">0</strong>
                     <span class="fs-6">R$ Peças Vencidas</span>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="border rounded p-4 d-flex align-items-center justify-content-between" style="border rounded: #aaa;">
-                <div>
+                <div class="me-3">
                     <i class="bi bi-cash fs-1 text-success"></i>
                 </div>
-                <div class="d-flex flex-column align-items-end">
+                <div class="d-flex flex-column align-items-end text-end">
                     <strong class="fs-4">0</strong>
                     <span class="fs-6">R$ Receber Vencidas</span>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="border rounded p-4 d-flex align-items-center justify-content-between" style="border rounded: #aaa;">
-                <div>
+                <div class="me-3">
                     <i class="bi bi-cash fs-1 text-success"></i>
                 </div>
-                <div class="d-flex flex-column align-items-end">
+                <div class="d-flex flex-column align-items-end text-end">
                     <strong class="fs-4">0</strong>
                     <span class="fs-6">R$ Vendas Hoje</span>
                 </div>

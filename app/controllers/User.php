@@ -24,14 +24,11 @@ class User extends BaseController
         //load users
         $this->view("layouts/html_header");
         $this->view("header-navbar", $data);
-        $this->view("users-table", $data);
-        $this->view("modal-add-new-user");
-        $this->view("modal-edit-user");
-        $this->view("modal-remove-user");
+        $this->view("users-data", $data);
         $this->view("layouts/html_footer");
     }
 
-    public function add_new_user(){
+    public function insert_user(){
         if (!check_login()){
             header("Location: index.php");
         }

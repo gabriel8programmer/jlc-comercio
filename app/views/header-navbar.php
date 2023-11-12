@@ -11,8 +11,8 @@
 
                 <!-- home -->
                 <a class="navbar-brand text-light" href="?ct=main&mt=index">
-                <i class="bi bi-house-door-fill"></i>
-                Home
+                    <i class="bi bi-house-door-fill"></i>
+                    Home
                 </a>
 
                 <!-- list button -->
@@ -100,7 +100,9 @@
                             <?= ucfirst($login->name) ?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item text-light" href="#modal-edit-profile" data-bs-toggle="modal">Editar Perfil</a></li>
+                            <li>
+                                <a class="dropdown-item text-light" href data-bs-toggle="modal" data-bs-target="#modal-edit-profile">Editar Perfil</a>
+                            </li>
                             <li>
                                 <hr class="dropdown-divider text-light">
                             </li>
@@ -112,3 +114,55 @@
         </div>
     </div>
 </header>
+
+<!--modal what to edit profile of a user-->
+<div class="modal fade" id="modal-edit-profile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="my-modal modal-content border border-primary">
+            <div class="modal-header" id="header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Perfil</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" id="edit-profile-frm" novalidate>
+                    <div class="row my-3">
+                        <div class="col-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="input_name" id="name" placeholder="Nome" required>
+                                <label for="name">Nome</label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="input_cpf" id="cpf" placeholder="CPF" required>
+                                <label for="cpf">CPF</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row my-3">
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" name="input_email" id="email" placeholder="Email" required>
+                                <label for="email">Email</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row my-3">
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="password" class="form-control" name="input_password" id="password" placeholder="Senha" required>
+                                <label for="password">Senha</label>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="submit" class="btn btn-success">Salvar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
