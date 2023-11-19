@@ -11,7 +11,7 @@
     <div class="row g-3 my-3 justify-content-between">
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
             <form>
-                Montrar
+                Mostrar
                 <select class="px-1 py-2">
                     <option value="10">10</option>
                     <option value="25">25</option>
@@ -24,7 +24,7 @@
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
             <form>
                 <div class="input-group">
-                    <label for="search-user" class="input-group-text btn btn-success" id="basic-addon1"><i class="bi bi-search"></i></label>
+                    <label for="search-user" class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></label>
                     <input type="search" id="search-user" class="form-control" placeholder="Pesquise aqui...">
                 </div>
             </form>
@@ -95,7 +95,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="?ct=user&mt=add_new_user" method="post">
+                <form method="post" id="add-new-user-frm" novalidate>
                     <div class="row g-2 my-2">
                         <div class="col-12 col-md-4 col-lg-3">
                             <div class="form-floating">
@@ -156,67 +156,67 @@
 
 <!--modal to edit a user in database-->
 <div class="modal fade" id="modal-edit-user" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="my-modal modal-content border border-primary">
-      <div class="modal-header" id="header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Registro</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="#" method="post">
-          <div class="row my-3">
-            <div class="col-6">
-              <div class="form-floating">
-                <input type="text" class="form-control" name="input_name" id="name" placeholder="Nome" required>
-                <label for="name">Nome</label>
-              </div>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="my-modal modal-content border border-primary">
+            <div class="modal-header" id="header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Registro</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="col-6">
-              <div class="form-floating">
-                <input type="text" class="form-control" name="input_cpf" id="cpf" placeholder="CPF" required>
-                <label for="cpf">CPF</label>
-              </div>
-            </div>
-          </div>
+            <div class="modal-body">
+                <form action="#" method="post">
+                    <div class="row my-3">
+                        <div class="col-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="input_name" name="name" placeholder="Nome" required>
+                                <label for="name">Nome</label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="input_cpf" name="cpf" placeholder="CPF" required>
+                                <label for="cpf">CPF</label>
+                            </div>
+                        </div>
+                    </div>
 
-          <div class="row my-3">
-            <div class="col-12">
-              <div class="form-floating">
-                <input type="email" class="form-control" name="input_email" id="email" placeholder="Email" required>
-                <label for="email">Email</label>
-              </div>
-            </div>
-          </div>
+                    <div class="row my-3">
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" id="input_email" name="email" placeholder="Email" required>
+                                <label for="email">Email</label>
+                            </div>
+                        </div>
+                    </div>
 
-          <div class="row my-3">
-            <div class="col-12">
-              <div class="form-floating">
-                <input type="password" class="form-control" name="input_password" id="password" placeholder="Senha" required>
-                <label for="password">Senha</label>
-              </div>
-            </div>
-          </div>
+                    <div class="row my-3">
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="input_password" name="password" placeholder="Senha" required>
+                                <label for="password">Senha</label>
+                            </div>
+                        </div>
+                    </div>
 
-          <div class="row my-3">
-            <div class="col-12">
-              <div class="form-floating">
-                <select name="select_profile" id="profile" placeholder="Nível" required class="form-select">
-                  <option value="admin">Administrador</option>
-                  <option value="tesoureiro">Tesoureiro</option>
-                  <option value="operador">Operador</option>
-                </select>
-                <label for="profile" class="form-label">Nível</label>
-              </div>
+                    <div class="row my-3">
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <select id="select_profile" name="profile" placeholder="Nível" required class="form-select">
+                                    <option value="admin">Administrador</option>
+                                    <option value="tesoureiro">Tesoureiro</option>
+                                    <option value="operador">Operador</option>
+                                </select>
+                                <label for="profile" class="form-label">Nível</label>
+                            </div>
+                        </div>
+                    </div>
             </div>
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <button type="submit" class="btn btn-success">Salvar</button>
-        </form>
-      </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="submit" class="btn btn-success">Salvar</button>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <!--modal to remove a user in database-->
@@ -240,3 +240,54 @@
         </div>
     </div>
 </div>
+
+<script>
+
+    //get all forms
+    const frmAddNewUser = document.querySelector("#add-new-user-frm")
+
+    //test user
+    function fakeUser(){
+        frmAddNewUser.querySelector("#name").value = "teste"
+        frmAddNewUser.querySelector("#cpf").value = "111.111.111-11"
+        frmAddNewUser.querySelector("#email").value = "teste@gmail.com"
+        frmAddNewUser.querySelector("#phone").value = "(11) 11111-1111"
+        frmAddNewUser.querySelector("#password").value = "123"
+        frmAddNewUser.querySelector("#profile").value = "operador"
+    }
+
+    //function for to add new User
+    function addNewUser(e){
+
+        const name = frmAddNewUser.querySelector("#name").value
+        const cpf = frmAddNewUser.querySelector("#cpf").value
+        const email = frmAddNewUser.querySelector("#email").value
+        const phone = frmAddNewUser.querySelector("#phone").value
+        const password = frmAddNewUser.querySelector("#password").value
+        const profile = frmAddNewUser.querySelector("#profile").value
+
+        axios.post("?ct=user&mt=insert_user", {
+            name,
+            cpf,
+            email,
+            phone,
+            password,
+            profile
+        }).then(response => {
+
+            if (response.status === 200){
+                console.log("OK!")
+            } else {
+                throw Error("NOK!")
+            }
+
+        }).catch(error => {
+            console.log(error.message)
+        })
+
+    }
+
+    //to call events
+    frmAddNewUser.addEventListener("submit", addNewUser)
+
+</script>

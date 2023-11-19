@@ -16,7 +16,7 @@ class User extends BaseController
 
         //load all data for the users's panel
         $model = new Users();
-        $results = $model->load_all_data();
+        $results = $model->get_all_data();
 
         $data["login"] = $_SESSION["login"];
         $data["users"] = $results["data"];
@@ -29,27 +29,32 @@ class User extends BaseController
     }
 
     public function insert_user(){
+
         if (!check_login()){
             header("Location: index.php");
         }
 
-        if (!$_SERVER["REQUEST_METHOD"] != "POST"){
-            header("Location: index.php");
+        if ($_SERVER["REQUEST_METHOD"] != "post"){
+            header("Location: ?ct=user&mt=index");
+            return;
         }
 
+        $data = json_decode(file_get_contents("php://input"), true);
+
+        printData($data);
+        
         $params = [
-            ":name" => $_POST["input_name"],
-            ":cpf" => $_POST["input_cpf"],
-            ":email" => $_POST["input_email"],
-            ":phone" => $_POST["input_phone"],
-            ":password" => $_POST["input_password"],
-            ":profile" => $_POST["select_profile"]
+            ":name" => $data["name"],
+            ":cpf" => $data["cpf"],
+            ":email" => $data["email"],
+            ":phone" => $data["phone"],
+            ":password" => $data["password"],
+            ":profile" => $data["profile"]
         ];
 
         //to instacitate the class users
         $model = new Users();
         $results = $model->insert($params);
-
         $this->index();
     }
 

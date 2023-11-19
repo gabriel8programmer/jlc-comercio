@@ -20,7 +20,7 @@
                     </div>
 
                     <!--form login-->
-                    <form action="?ct=main&mt=login_submit" method="post" class="p-3 rounded-4" id="form-login" novalidate>
+                    <form action="?ct=main&mt=login_submit" method="post" class="p-3 rounded-4" id="form-login">
 
                         <!--title-->
                         <div class="text-center">

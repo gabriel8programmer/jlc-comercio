@@ -9,7 +9,7 @@ class Main extends BaseController {
 
     public function index(){
 
-        //check if there is no active user in session
+        //check if there is not active user in session
         if (!check_login()){
             $this->login_frm();
             return;
@@ -129,6 +129,6 @@ class Main extends BaseController {
     }
 
     public function edit_profile($id){
-
+        
     }
 }

@@ -17,7 +17,7 @@ class Users extends BaseModel
         $results = $this->query("SELECT id, " . 
         "AES_DECRYPT(password, '". MYSQL_AES_KEY . "') password ". 
         "FROM users WHERE " . 
-        "AES_ENCRYPT(:username, '". MYSQL_AES_KEY . "') = name", $params);
+        ":username = name", $params);
 
         //if there is no user, returns false
         if ($results->affected_rows == 0){
@@ -41,14 +41,11 @@ class Users extends BaseModel
     }
 
     public function get_user_data($username){
-
-        //get all params in the current user
         $params = [
             ":username" => $username
         ];
 
-        //get all necessary datas in the user
-        $results = $this->query("SELECT id, AES_DECRYPT(name, '" . MYSQL_AES_KEY . "') name, profile FROM users WHERE AES_ENCRYPT(:username, '" . MYSQL_AES_KEY . "') = name", $params);
+        $results = $this->query("SELECT id, `name`, profile FROM users WHERE :username = `name`", $params);
 
         return [
             "status" => "success",
@@ -56,12 +53,11 @@ class Users extends BaseModel
         ];
     }
 
-    public function load_all_data(){
-        //get all necessary datas in the user
+    public function get_all_data(){
         $this->db_connect();
         $results = $this->query("SELECT id, ".
+        "name, ".
         "AES_DECRYPT(cpf, '" . MYSQL_AES_KEY . "') cpf, ".
-        "AES_DECRYPT(name, '" . MYSQL_AES_KEY . "') name, ".
         "AES_DECRYPT(phone, '" . MYSQL_AES_KEY . "') phone, ". 
         "AES_DECRYPT(email, '" . MYSQL_AES_KEY . "') email, ".
         "AES_DECRYPT(password, '" . MYSQL_AES_KEY . "') password, ". 
@@ -77,7 +73,7 @@ class Users extends BaseModel
         $this->db_connect();
         $results = $this->non_query(
             "INSERT INTO users VALUES ( 0, " . 
-            "AES_ENCRYPT(:name, '". MYSQL_AES_KEY ."'), " .
+            ":name, " .
             "AES_ENCRYPT(:cpf, '". MYSQL_AES_KEY ."'), " .
             "AES_ENCRYPT(:email, '". MYSQL_AES_KEY ."'), " .
             "AES_ENCRYPT(:phone, '". MYSQL_AES_KEY ."'), " .
@@ -98,7 +94,7 @@ class Users extends BaseModel
      
         $this->db_connect();
         $results = $this->non_query("UPDATE name, cpf, email, password FROM users SET " .
-        "AES_ENCRYPT(:name, '". MYSQL_AES_KEY ."'), " .
+        "name, " .
         "AES_ENCRYPT(:cpf, '". MYSQL_AES_KEY ."'), " .
         "AES_ENCRYPT(:email, '". MYSQL_AES_KEY ."'), " .
         "AES_ENCRYPT(:password, '". MYSQL_AES_KEY ."'), " .
@@ -108,7 +104,6 @@ class Users extends BaseModel
             "status" => "success",
             "data" => $results->results
         ];
-
     }
 
     public function delete($id){
