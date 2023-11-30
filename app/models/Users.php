@@ -90,15 +90,16 @@ class Users extends BaseModel
         ];
     }
 
-    public function update($params){
+    public function update($id, $params){
      
         $this->db_connect();
-        $results = $this->non_query("UPDATE name, cpf, email, password FROM users SET " .
-        "name, " .
+        $results = $this->non_query("UPDATE `name`, cpf, email, `password`, `profile`, `updatedAt` FROM users SET " .
+        ":name, " .
         "AES_ENCRYPT(:cpf, '". MYSQL_AES_KEY ."'), " .
         "AES_ENCRYPT(:email, '". MYSQL_AES_KEY ."'), " .
         "AES_ENCRYPT(:password, '". MYSQL_AES_KEY ."'), " .
-        "WHERE id = :id");
+        ":profile, NOW() " .
+        "WHERE id = $id", $params);
 
         return [
             "status" => "success",

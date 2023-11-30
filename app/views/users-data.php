@@ -2,7 +2,7 @@
 
     <div class="row my-2">
         <div class="col">
-            <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modal-add-new-user">
+            <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#add-new-user-modal">
                 Novo Usuário
             </button>
         </div>
@@ -31,7 +31,7 @@
         </div>
     </div>
 
-    <div class="row mt-5 mb-3">
+    <div class="row mt-5 mb-2">
 
         <div class="col-12">
             <small>
@@ -57,15 +57,26 @@
                                 <td><?= $user->email ?></td>
                                 <td><?= $user->password ?></td>
                                 <td><?= $user->profile ?></td>
+
+                                <?php 
+                                    $user_id = $user->id;
+                                    $user_cpf = $user->cpf;
+                                    $user_name = $user->name;
+                                    $user_phone = $user->phone;
+                                    $user_email = $user->email;
+                                    $user_password = $user->password;
+                                    $user_profile = $user->profile;
+                                ?>
+
                                 <td>
                                     <div class="row">
                                         <div class="col-2">
-                                            <a href="#modal-edit-user" class="text-primary fs-6" data-bs-toggle="modal">
+                                            <a href="#edit-user-modal" id="link-edit-user" data-id="<?= $user->id ?>" class="text-primary fs-6" data-bs-toggle="modal">
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>
                                         </div>
                                         <div class="col-2">
-                                            <a href="#modal-remove-user" class="text-primary fs-6" data-bs-toggle="modal">
+                                            <a href="#remove-user-modal" id="link-edit-user" data-id="<?= $user->id ?>" class="text-primary fs-6" data-bs-toggle="modal">
                                                 <i class="bi bi-trash3-fill text-danger fs-6"></i>
                                             </a>
                                         </div>
@@ -78,12 +89,13 @@
             </small>
         </div>
     </div>
+
 </div>
 
 <!--modals-->
 
 <!--modal to add new user in the database-->
-<div class="modal fade" id="modal-add-new-user" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="add-new-user-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable modal-fullscreen-sm-down">
         <div class="my-modal modal-content border border-primary">
             <div class="modal-header px=3 py-1" id="header">
@@ -95,7 +107,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" id="add-new-user-frm" novalidate>
+                <form action="?ct=user&mt=insert_user" method="POST" id="add-new-user-frm">
                     <div class="row g-2 my-2">
                         <div class="col-12 col-md-4 col-lg-3">
                             <div class="form-floating">
@@ -155,7 +167,7 @@
 </div>
 
 <!--modal to edit a user in database-->
-<div class="modal fade" id="modal-edit-user" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+<div class="modal fade" id="edit-user-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
         <div class="my-modal modal-content border border-primary">
             <div class="modal-header" id="header">
@@ -163,17 +175,17 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="#" method="post">
+                <form method="post" id="edit-user-frm" action="?ct=user&mt=edit_user&id=<?= $user_id ?>">
                     <div class="row my-3">
                         <div class="col-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="input_name" name="name" placeholder="Nome" required>
+                                <input type="text" class="form-control" name="input_name" id="name" placeholder="Nome" value="<?= $user_name ?>" required>
                                 <label for="name">Nome</label>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="input_cpf" name="cpf" placeholder="CPF" required>
+                                <input type="text" class="form-control" name="input_cpf" id="cpf" placeholder="CPF" value="<?= $user_cpf ?>" required>
                                 <label for="cpf">CPF</label>
                             </div>
                         </div>
@@ -182,7 +194,7 @@
                     <div class="row my-3">
                         <div class="col-12">
                             <div class="form-floating">
-                                <input type="email" class="form-control" id="input_email" name="email" placeholder="Email" required>
+                                <input type="email" class="form-control" name="input_email" id="email" placeholder="Email" value="<?= $user_email ?>" required>
                                 <label for="email">Email</label>
                             </div>
                         </div>
@@ -191,7 +203,7 @@
                     <div class="row my-3">
                         <div class="col-12">
                             <div class="form-floating">
-                                <input type="password" class="form-control" id="input_password" name="password" placeholder="Senha" required>
+                                <input type="password" class="form-control" name="input_password" id="password" placeholder="Senha" value="<?= $user_password ?>" required>
                                 <label for="password">Senha</label>
                             </div>
                         </div>
@@ -200,7 +212,7 @@
                     <div class="row my-3">
                         <div class="col-12">
                             <div class="form-floating">
-                                <select id="select_profile" name="profile" placeholder="Nível" required class="form-select">
+                                <select name="select_profile" id="profile" placeholder="Nível" required class="form-select">
                                     <option value="admin">Administrador</option>
                                     <option value="tesoureiro">Tesoureiro</option>
                                     <option value="operador">Operador</option>
@@ -220,7 +232,7 @@
 </div>
 
 <!--modal to remove a user in database-->
-<div class="modal fade" id="modal-remove-user" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="remove-user-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
     <div class="modal-dialog">
         <div class="my-modal modal-content border border-primary">
             <div class="modal-header" id="header">
@@ -228,13 +240,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="#" method="get">
+                <form method="post" id="edit-user-frm" action="?ct=user&mt=remove_user&id=<?= $user_id ?>">
                     <p>Deseja Realmente Excluir este Registro?</p>
             </div>
             <div class="modal-footer">
-                <form action="#">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    <button type="submit" class="btn btn-danger">Excluir</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="submit" class="btn btn-danger">Excluir</button>
                 </form>
             </div>
         </div>
@@ -242,52 +253,18 @@
 </div>
 
 <script>
-
     //get all forms
     const frmAddNewUser = document.querySelector("#add-new-user-frm")
+    const frmEditUser = document.querySelector("#edit-user-frm")
+    const frmRemoveUser = document.querySelector("#remove-user-frm")
 
     //test user
-    function fakeUser(){
-        frmAddNewUser.querySelector("#name").value = "teste"
+    function fakeUser(number) {
+        frmAddNewUser.querySelector("#name").value = `teste${number}`
         frmAddNewUser.querySelector("#cpf").value = "111.111.111-11"
-        frmAddNewUser.querySelector("#email").value = "teste@gmail.com"
+        frmAddNewUser.querySelector("#email").value = `teste${number}@gmail.com`
         frmAddNewUser.querySelector("#phone").value = "(11) 11111-1111"
         frmAddNewUser.querySelector("#password").value = "123"
         frmAddNewUser.querySelector("#profile").value = "operador"
     }
-
-    //function for to add new User
-    function addNewUser(e){
-
-        const name = frmAddNewUser.querySelector("#name").value
-        const cpf = frmAddNewUser.querySelector("#cpf").value
-        const email = frmAddNewUser.querySelector("#email").value
-        const phone = frmAddNewUser.querySelector("#phone").value
-        const password = frmAddNewUser.querySelector("#password").value
-        const profile = frmAddNewUser.querySelector("#profile").value
-
-        axios.post("?ct=user&mt=insert_user", {
-            name,
-            cpf,
-            email,
-            phone,
-            password,
-            profile
-        }).then(response => {
-
-            if (response.status === 200){
-                console.log("OK!")
-            } else {
-                throw Error("NOK!")
-            }
-
-        }).catch(error => {
-            console.log(error.message)
-        })
-
-    }
-
-    //to call events
-    frmAddNewUser.addEventListener("submit", addNewUser)
-
 </script>

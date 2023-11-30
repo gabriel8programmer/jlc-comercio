@@ -129,6 +129,10 @@ class Main extends BaseController {
     }
 
     public function edit_profile($id){
-        
+
+        if (!check_login()){
+            header("Location: index.php");
+            return;
+        }
     }
 }

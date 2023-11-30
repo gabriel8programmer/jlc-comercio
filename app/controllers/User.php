@@ -8,8 +8,7 @@ use jlc_comercio\Models\Users;
 class User extends BaseController
 {
 
-    public function index()
-    {
+    public function index(){
         if (!check_login()){
             return header("Location: index.php");
         }
@@ -34,36 +33,55 @@ class User extends BaseController
             header("Location: index.php");
         }
 
-        if ($_SERVER["REQUEST_METHOD"] != "post"){
-            header("Location: ?ct=user&mt=index");
+        if ($_SERVER["REQUEST_METHOD"] != "POST"){
+            $this->index();
             return;
         }
 
-        $data = json_decode(file_get_contents("php://input"), true);
-
-        printData($data);
-        
+        $data = $_POST;
         $params = [
-            ":name" => $data["name"],
-            ":cpf" => $data["cpf"],
-            ":email" => $data["email"],
-            ":phone" => $data["phone"],
-            ":password" => $data["password"],
-            ":profile" => $data["profile"]
+            ":name" => $data["input_name"],
+            ":cpf" => $data["input_cpf"],
+            ":email" => $data["input_email"],
+            ":phone" => $data["input_phone"],
+            ":password" => $data["input_password"],
+            ":profile" => $data["select_profile"]
         ];
 
         //to instacitate the class users
         $model = new Users();
         $results = $model->insert($params);
+        header("Location: ?ct=user&mt=index");
         $this->index();
     }
 
-    public function edit_user($id)
-    {
+    public function edit_user($id){
+        if (!check_login()){
+            header("Location: index.php");
+        }
+
+        if ($_SERVER["REQUEST_METHOD"] != "POST"){
+            header("Location: ?ct=user&mt=index");
+            return;
+        }
+
+        $data = $_POST;
+        $params = [
+            ":name" => $data["input_name"],
+            ":cpf" => $data["input_cpf"],
+            ":email" => $data["input_email"],
+            ":password" => $data["input_password"],
+            ":profile" => $data["select_profile"]
+        ];
+
+        $model = new Users();
+        $results = $model->update($id, $params);
+        header("Location: ?ct=user&mt=index");
+        $this->index();
+
     }
 
-    public function remove_user($id)
-    {
+    public function remove_user($id){
         if (!check_login()) {
             header("Location: index.php");
             return;
@@ -71,7 +89,7 @@ class User extends BaseController
 
         $model = new Users();
         $results = $model->delete($id);
-
+        header("Location: ?ct=user&mt=index");
         $this->index();
     }
 
