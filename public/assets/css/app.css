@@ -7,6 +7,10 @@
   text-decoration: none;
 }
 
+i {
+  pointer-events: none;
+}
+
 #login #range {
   height: 78px;
   background-color: #0b0d45;
