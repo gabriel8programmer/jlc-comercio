@@ -134,5 +134,24 @@ class Main extends BaseController {
             header("Location: index.php");
             return;
         }
+
+        if ($_SERVER["REQUEST_METHOD"] != "POST"){
+            header("Location: index.php");
+            return;
+        }
+
+        $data = $_POST;
+        $params = [
+            ":name" => $data["input_name"],
+            ":cpf" => $data["input_cpf"],
+            ":email" => $data["input_email"],
+            ":password" => $data["input_password"],
+        ];
+
+        //update with the database
+        $model = new Users();
+        $results = $model->update($id, $params);
+        header("Location: index.php");
+        $this->index();
     }
 }

@@ -47,8 +47,7 @@
                             <th scope="col">Opções</th>
                         </tr>
                     </thead>
-                    <tbody>
-
+                    <tbody id="table-users">
                         <?php foreach ($users as $user) : ?>
                             <tr>
                                 <td><?= $user->cpf ?></td>
@@ -57,26 +56,15 @@
                                 <td><?= $user->email ?></td>
                                 <td><?= $user->password ?></td>
                                 <td><?= $user->profile ?></td>
-
-                                <?php 
-                                    $user_id = $user->id;
-                                    $user_cpf = $user->cpf;
-                                    $user_name = $user->name;
-                                    $user_phone = $user->phone;
-                                    $user_email = $user->email;
-                                    $user_password = $user->password;
-                                    $user_profile = $user->profile;
-                                ?>
-
                                 <td>
                                     <div class="row">
                                         <div class="col-2">
-                                            <a href="#edit-user-modal" id="link-edit-user" data-id="<?= $user->id ?>" class="text-primary fs-6" data-bs-toggle="modal">
-                                                <i class="bi bi-pencil-square"></i>
+                                            <a href="#edit-user-modal" data-id="<?= $user->id ?>" data-bs-toggle="modal" class="link-edit-user">
+                                                <i class="bi bi-pencil-square text-info fs-6"></i>
                                             </a>
                                         </div>
                                         <div class="col-2">
-                                            <a href="#remove-user-modal" id="link-edit-user" data-id="<?= $user->id ?>" class="text-primary fs-6" data-bs-toggle="modal">
+                                            <a href="#remove-user-modal" data-id="<?= $user->id ?>" data-bs-toggle="modal" class="link-remove-user">
                                                 <i class="bi bi-trash3-fill text-danger fs-6"></i>
                                             </a>
                                         </div>
@@ -107,7 +95,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="?ct=user&mt=insert_user" method="POST" id="add-new-user-frm">
+                <form method="POST" id="add-new-user-frm">
                     <div class="row g-2 my-2">
                         <div class="col-12 col-md-4 col-lg-3">
                             <div class="form-floating">
@@ -157,7 +145,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-lg-3">
-                            <input type="submit" class="btn btn-success text-light w-100" value="Gravar">
+                            <input type="submit" id="btnAddNewUser" class="btn btn-success text-light w-100" value="Gravar">
                         </div>
                     </div>
                 </form>
@@ -175,17 +163,17 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" id="edit-user-frm" action="?ct=user&mt=edit_user&id=<?= $user_id ?>">
+                <form method="post" id="edit-user-frm">
                     <div class="row my-3">
                         <div class="col-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" name="input_name" id="name" placeholder="Nome" value="<?= $user_name ?>" required>
+                                <input type="text" class="form-control" name="input_name" id="name" placeholder="Nome" required>
                                 <label for="name">Nome</label>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" name="input_cpf" id="cpf" placeholder="CPF" value="<?= $user_cpf ?>" required>
+                                <input type="text" class="form-control" name="input_cpf" id="cpf" placeholder="CPF" required>
                                 <label for="cpf">CPF</label>
                             </div>
                         </div>
@@ -194,7 +182,7 @@
                     <div class="row my-3">
                         <div class="col-12">
                             <div class="form-floating">
-                                <input type="email" class="form-control" name="input_email" id="email" placeholder="Email" value="<?= $user_email ?>" required>
+                                <input type="email" class="form-control" name="input_email" id="email" placeholder="Email" required>
                                 <label for="email">Email</label>
                             </div>
                         </div>
@@ -203,7 +191,7 @@
                     <div class="row my-3">
                         <div class="col-12">
                             <div class="form-floating">
-                                <input type="password" class="form-control" name="input_password" id="password" placeholder="Senha" value="<?= $user_password ?>" required>
+                                <input type="password" class="form-control" name="input_password" id="password" placeholder="Senha" required>
                                 <label for="password">Senha</label>
                             </div>
                         </div>
@@ -233,38 +221,195 @@
 
 <!--modal to remove a user in database-->
 <div class="modal fade" id="remove-user-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="my-modal modal-content border border-primary">
             <div class="modal-header" id="header">
-                <h5 class="modal-title">Excluir Registro</h5>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Remover Registro</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <form method="post" id="edit-user-frm" action="?ct=user&mt=remove_user&id=<?= $user_id ?>">
+            <form method="post" id="remove-user-frm">
+                <div class="modal-body">
                     <p>Deseja Realmente Excluir este Registro?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-danger">Excluir</button>
-                </form>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="submit" name="btn-submit" id="btnRemoveUser" class="btn btn-danger">Excluir</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
 <script>
     //get all forms
-    const frmAddNewUser = document.querySelector("#add-new-user-frm")
-    const frmEditUser = document.querySelector("#edit-user-frm")
-    const frmRemoveUser = document.querySelector("#remove-user-frm")
+    const $frmAddNewUser = document.querySelector("#add-new-user-frm")
+    const $frmEditUser = document.querySelector("#edit-user-frm")
+    const $frmRemoveUser = document.querySelector("#remove-user-frm")
+    const $linksRemoveUser = [...document.querySelectorAll(".link-remove-user")]
+    const $linksEditUser = [...document.querySelectorAll(".link-edit-user")]
+    const $tableUsers = document.querySelector("#table-users")
+
+    let updatedUserId = 0
 
     //test user
-    function fakeUser(number) {
-        frmAddNewUser.querySelector("#name").value = `teste${number}`
-        frmAddNewUser.querySelector("#cpf").value = "111.111.111-11"
-        frmAddNewUser.querySelector("#email").value = `teste${number}@gmail.com`
-        frmAddNewUser.querySelector("#phone").value = "(11) 11111-1111"
-        frmAddNewUser.querySelector("#password").value = "123"
-        frmAddNewUser.querySelector("#profile").value = "operador"
+    function fakeUser(number = "") {
+        $frmAddNewUser.querySelector("#name").value = `teste${number}`
+        $frmAddNewUser.querySelector("#cpf").value = "111.111.111-11"
+        $frmAddNewUser.querySelector("#email").value = `teste${number}@gmail.com`
+        $frmAddNewUser.querySelector("#phone").value = "(11) 11111-1111"
+        $frmAddNewUser.querySelector("#password").value = "123"
+        $frmAddNewUser.querySelector("#profile").value = "operador"
     }
+
+
+    //function for to add a new user in the database
+    function load_users() {
+
+        axios.get("?ct=user&mt=index")
+            .then(response => {
+                if (response.status === 200) {
+                    return response.data
+                } else {
+                    throw Error("Erro, Não foi possível se acessar o recurso!")
+                }
+            })
+            .then(data => {
+                console.log(data)
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+    }
+
+    function reload(){
+        location.reload()
+    }
+
+    function updateIdUser(e) {
+        updatedUserId = e.target.dataset.id
+        console.log(updatedUserId)
+    }
+    
+    function updateUserData(e) {
+        //get inputs
+        const cpfValue = $frmEditUser.querySelector("#cpf")
+        const nameValue = $frmEditUser.querySelector("#name")
+        const emailValue = $frmEditUser.querySelector("#email")
+        const passwordValue = $frmEditUser.querySelector("#password")
+        const profileValue = $frmEditUser.querySelector("#profile")
+        
+        updatedIdUser = e.target.dataset.id
+        console.log(updatedIdUser);
+    }
+
+    function addNewUser(e) {
+        e.preventDefault()
+
+        const nameAdd = $frmAddNewUser.querySelector("#name").value
+        const cpfAdd = $frmAddNewUser.querySelector("#cpf").value
+        const emailAdd = $frmAddNewUser.querySelector("#email").value
+        const phoneAdd = $frmAddNewUser.querySelector("#phone").value
+        const passwordAdd = $frmAddNewUser.querySelector("#password").value
+        const $profileElement = $frmAddNewUser.querySelector("#profile")
+        const profileAdd = $profileElement.options[$profileElement.selectedIndex].value
+
+        axios.post("?ct=user&mt=insert_user", {
+                nameSend: nameAdd,
+                cpfSend: cpfAdd,
+                emailSend: emailAdd,
+                phoneSend: phoneAdd,
+                passwordSend: passwordAdd,
+                profileSend: profileAdd
+            })
+            .then(response => {
+                if (response.status === 200) {
+                    return "OK, USER ADDED!"
+                } else {
+                    throw Error("Error!")
+                }
+            })
+            .then(data => {
+                console.log(data)
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+
+        reload()
+    }
+    
+    function updateUser(e){
+        e.preventDefault()
+
+        const nameAdd = $frmEditUser.querySelector("#name").value
+        const cpfAdd = $frmEditUser.querySelector("#cpf").value
+        const emailAdd = $frmEditUser.querySelector("#email").value
+        const passwordAdd = $frmEditUser.querySelector("#password").value
+        const $profileElement = $frmEditUser.querySelector("#profile")
+        const profileAdd = $profileElement.options[$profileElement.selectedIndex].value
+
+        const idAdd = updatedIdUser
+        axios.post("?ct=user&mt=update_user", {
+            idSend: idAdd,
+            cpfSend: cpfAdd,
+            nameSend: nameAdd,
+            emailSend: emailAdd,
+            cpfSend: cpfAdd,
+            passwordSend:passwordAdd,
+            profileSend: profileAdd
+        })
+        .then(response => {
+            if (response.status === 200){
+                return response.data//`OK, USER ${idAdd} UPDATED`
+            } else {
+                throw Error("Recurso não disponível!")
+            }
+        })
+        .then(data => {
+            console.log(data)
+        })
+        .catch(error => {
+            console.log(error.message)
+        })
+
+        reload();
+    }
+
+    function removeUser(e) {
+        e.preventDefault();
+
+        const idAdd = updatedUserId
+        axios.post("?ct=user&mt=remove_user", {
+                idSend: idAdd
+            })
+            .then(response => {
+                if (response.status === 200) {
+                    return `USER ${idAdd} DELETED`
+                } else {
+                    throw Error("Recurso indisponível!")
+                }
+            })
+            .then(data => {
+                console.log(data)
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+
+        reload()
+    }
+
+    //events
+    $linksRemoveUser.forEach($link => {
+        $link.addEventListener("click", updateIdUser)
+    })
+
+    $linksEditUser.forEach($link => {
+        $link.addEventListener("click", updateUserData)
+    })
+
+    $frmAddNewUser.addEventListener("submit", addNewUser)
+    $frmEditUser.addEventListener("submit", updateUser)
+    $frmRemoveUser.addEventListener("submit", removeUser)
+
 </script>

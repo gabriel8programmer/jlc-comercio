@@ -4,6 +4,7 @@ namespace jlc_comercio\Controllers;
 
 use jlc_comercio\Controllers\BaseController;
 use jlc_comercio\Models\Users;
+use Monolog\Handler\BrowserConsoleHandler;
 
 class User extends BaseController
 {
@@ -19,18 +20,20 @@ class User extends BaseController
 
         $data["login"] = $_SESSION["login"];
         $data["users"] = $results["data"];
-
+        
         //load users
         $this->view("layouts/html_header");
         $this->view("header-navbar", $data);
         $this->view("users-data", $data);
         $this->view("layouts/html_footer");
+
+        return json_encode($data["users"], JSON_PRETTY_PRINT);
     }
 
     public function insert_user(){
 
         if (!check_login()){
-            header("Location: index.php");
+           header("Location: index.php");
         }
 
         if ($_SERVER["REQUEST_METHOD"] != "POST"){
@@ -38,59 +41,60 @@ class User extends BaseController
             return;
         }
 
-        $data = $_POST;
+        $data = json_decode(file_get_contents("php://input"), true);
+        extract($data);
+
         $params = [
-            ":name" => $data["input_name"],
-            ":cpf" => $data["input_cpf"],
-            ":email" => $data["input_email"],
-            ":phone" => $data["input_phone"],
-            ":password" => $data["input_password"],
-            ":profile" => $data["select_profile"]
+            ":name" => $nameSend,
+            ":cpf" => $cpfSend,
+            ":email" => $emailSend,
+            ":phone" => $phoneSend,
+            ":password" => $passwordSend,
+            ":profile" => $profileSend
         ];
 
         //to instacitate the class users
         $model = new Users();
         $results = $model->insert($params);
-        header("Location: ?ct=user&mt=index");
         $this->index();
     }
 
-    public function edit_user($id){
+    public function update_user(){
         if (!check_login()){
             header("Location: index.php");
         }
 
-        if ($_SERVER["REQUEST_METHOD"] != "POST"){
-            header("Location: ?ct=user&mt=index");
-            return;
-        }
-
-        $data = $_POST;
+        $data = json_decode(file_get_contents("php://input"), true);
+        extract($data);
         $params = [
-            ":name" => $data["input_name"],
-            ":cpf" => $data["input_cpf"],
-            ":email" => $data["input_email"],
-            ":password" => $data["input_password"],
-            ":profile" => $data["select_profile"]
+            ":id" => $idSend,
+            ":name" => $nameSend,
+            ":cpf" => $cpfSend,
+            ":email" => $emailSend,
+            ":password" => $passwordSend,
+            ":profile" => $profileSend
         ];
 
         $model = new Users();
-        $results = $model->update($id, $params);
-        header("Location: ?ct=user&mt=index");
-        $this->index();
+        $results = $model->update($params);
 
     }
 
-    public function remove_user($id){
+    public function remove_user(){
         if (!check_login()) {
             header("Location: index.php");
             return;
         }
 
+        if ($_SERVER["REQUEST_METHOD"] != "POST"){
+            $this->index();
+            return;
+        }
+
+        $data = json_decode(file_get_contents("php://input"), true);
+        extract($data);
         $model = new Users();
-        $results = $model->delete($id);
-        header("Location: ?ct=user&mt=index");
-        $this->index();
+        $results = $model->delete($idSend);
     }
 
 }

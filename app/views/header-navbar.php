@@ -124,11 +124,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="POST" id="edit-profile-frm" novalidate>
+                <form method="POST" id="edit-profile-frm" action="?ct=main&mt=edit_profile&id=<?= $login->id ?>">
                     <div class="row my-3">
                         <div class="col-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" name="input_name" id="name" placeholder="Nome" required>
+                                <input type="text" class="form-control" name="input_name" id="name" placeholder="Nome" required value="<?= $login->name ?>">
                                 <label for="name">Nome</label>
                             </div>
                         </div>
