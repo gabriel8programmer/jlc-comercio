@@ -4,7 +4,6 @@ namespace jlc_comercio\Controllers;
 
 use jlc_comercio\Controllers\BaseController;
 use jlc_comercio\Models\Users;
-use Monolog\Handler\BrowserConsoleHandler;
 
 class User extends BaseController
 {
@@ -26,11 +25,9 @@ class User extends BaseController
         $this->view("header-navbar", $data);
         $this->view("users-data", $data);
         $this->view("layouts/html_footer");
-
-        return json_encode($data["users"], JSON_PRETTY_PRINT);
     }
 
-    public function insert_user(){
+    public function insert(){
 
         if (!check_login()){
            header("Location: index.php");
@@ -45,18 +42,16 @@ class User extends BaseController
         extract($data);
 
         $params = [
-            ":name" => $nameSend,
-            ":cpf" => $cpfSend,
-            ":email" => $emailSend,
-            ":phone" => $phoneSend,
-            ":password" => $passwordSend,
-            ":profile" => $profileSend
+            ":name" => $name,
+            ":cpf" => $cpf,
+            ":email" => $email,
+            ":password" => $password,
+            ":profile" => $profile
         ];
 
-        //to instacitate the class users
+        //to instaciate the class users
         $model = new Users();
         $results = $model->insert($params);
-        $this->index();
     }
 
     public function update_user(){

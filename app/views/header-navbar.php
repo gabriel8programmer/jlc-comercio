@@ -1,7 +1,7 @@
 <header class="container-fluid">
     <div class="row py-3 px-5" id="header-dashboard">
         <div class="col-12 col-sm-8 col-md-6">
-            <img src="./assets/images/logo-large.png" alt="logo da applicação" class="img-fluid">
+            <img src="./assets/img/logo-large.png" alt="logo da applicação" class="img-fluid">
         </div>
     </div>
 
@@ -95,7 +95,7 @@
                     <div class="nav-item dropdown" id="navbar-icon-user">
                         <a class="nav-link dropdown-toggle text-light d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <div style="width: 40px; height: 40px;">
-                                <img src="./assets/images/icon-user.png" alt="icone de usuário" class="img-fluid">
+                                <img src="./assets/img/icon-user.png" alt="icone de usuário" class="img-fluid">
                             </div>
                             <?= ucfirst($login->name) ?>
                         </a>

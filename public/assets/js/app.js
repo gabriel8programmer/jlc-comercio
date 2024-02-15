@@ -1,6 +1,7 @@
 
-//user's script
-import User from './User.js';
+//imports
+import { $user } from "./elements.js";
+import { user } from "./functions.js";
 
-//execute method
-User.execute();
+//users
+$user.addFrm.addEventListener("submit", user.insert);

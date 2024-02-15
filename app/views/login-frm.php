@@ -1,27 +1,19 @@
-<main class="container-fluid">
 
-    <section class="row bg-primary vh-100" id="login">
+<div class="bg-primary w-100 vh-100">
+    <div class="container-fluid py-5" id="login">
 
-        <!--range-->
-        <div class="col-12" id="range"></div>
+        <div class="row justify-content-center">
+            <div id="logo-app">
+                <img class="img-fluid" src="./assets/img/logo-small.png" alt="logo da applicação em tamalho pequeno">
+            </div>
+        </div>
 
-        <!--container login-->
-        <div class="col-12">
+        <div class="row justify-content-center">
 
-            <div class="row justify-content-center align-items-center">
+            <div class="col-11 col-sm-10 col-md-6">
 
-                <div class="col-8 col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-2">
-
-                    <!--logo-small app-->
-                    <div class="mb-3 d-flex justify-content-center">
-                        <div id="logo-app">
-                            <img src="./assets/images/logo-small.png" alt="logo da aplicação" class="img-fluid">
-                        </div>
-                    </div>
-
-                    <!--form login-->
-                    <form action="?ct=main&mt=login_submit" method="post" class="p-3 rounded-4" id="form-login">
-
+                <div class="p-2 rounded-3 mx-auto" id="login-container">
+                    <form action="?ct=main&mt=login_submit" method="post" class="p-3 rounded-4">
                         <!--title-->
                         <div class="text-center">
                             <label class="h1 text-bold text-light">LOGIN</label>
@@ -30,7 +22,7 @@
                         <!--user icon -->
                         <div class="d-flex justify-content-center">
                             <div id="icon-user">
-                                <img src="./assets/images/icon-user.png" alt="icone do usuário" class="img-fluid">
+                                <img src="./assets/img/icon-user.png" alt="icone do usuário" class="img-fluid">
                             </div>
                         </div>
 
@@ -54,27 +46,10 @@
                             <input type="button" value="Cancelar" class="btn btn-transparent border-0 outline-0 text-light" name="inputCancel">
                         </div>
                     </form>
-                    <div class="row justify-content-center">
-                        <div class="col-12">
-                            <!--show validation errors-->
-                            <?php if (!empty($validation_errors)) : ?>
-                                <div class="alert alert-danger p-2 my-2 text-center">
-                                    <?php foreach ($validation_errors as $error) : ?>
-                                        <div><?= $error ?></div>
-                                    <?php endforeach; ?>
-                                </div>
-                            <?php endif; ?>
-
-                            <!--show server errors-->
-                            <?php if (!empty($server_error)) : ?>
-                                <div class="alert alert-danger p-2 my-2 text-center">
-                                    <div><?= $server_error ?></div>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                    </div>
                 </div>
+
             </div>
+
         </div>
-    </section>
-</main>
+    </div>
+</div>

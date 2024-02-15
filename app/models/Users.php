@@ -1,7 +1,6 @@
 <?php
 
 namespace jlc_comercio\Models;
-
 use jlc_comercio\Models\BaseModel;
 
 class Users extends BaseModel
@@ -58,7 +57,6 @@ class Users extends BaseModel
         $results = $this->query("SELECT id, ".
         "name, ".
         "AES_DECRYPT(cpf, '" . MYSQL_AES_KEY . "') cpf, ".
-        "AES_DECRYPT(phone, '" . MYSQL_AES_KEY . "') phone, ". 
         "AES_DECRYPT(email, '" . MYSQL_AES_KEY . "') email, ".
         "AES_DECRYPT(password, '" . MYSQL_AES_KEY . "') password, ". 
         "profile FROM users");
@@ -76,7 +74,6 @@ class Users extends BaseModel
             ":name, " .
             "AES_ENCRYPT(:cpf, '". MYSQL_AES_KEY ."'), " .
             "AES_ENCRYPT(:email, '". MYSQL_AES_KEY ."'), " .
-            "AES_ENCRYPT(:phone, '". MYSQL_AES_KEY ."'), " .
             "AES_ENCRYPT(:password, '". MYSQL_AES_KEY ."'), " .
             ":profile, " .
             "NOW(), " . 

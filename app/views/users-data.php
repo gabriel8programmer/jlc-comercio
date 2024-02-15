@@ -31,50 +31,45 @@
         </div>
     </div>
 
-    <div class="row mt-5 mb-2">
-
-        <div class="col-12">
-            <small>
-                <table class="table table-hover table-sm">
-                    <thead>
+    <div class="row">
+        <div class="col">
+            <table class="table table-hover table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">CPF</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Senha</th>
+                        <th scope="col">Nível</th>
+                        <th scope="col">Opções</th>
+                    </tr>
+                </thead>
+                <tbody id="table-users">
+                    <?php foreach ($users as $user) : ?>
                         <tr>
-                            <th scope="col">CPF</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Contato</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Senha</th>
-                            <th scope="col">Nível</th>
-                            <th scope="col">Opções</th>
-                        </tr>
-                    </thead>
-                    <tbody id="table-users">
-                        <?php foreach ($users as $user) : ?>
-                            <tr>
-                                <td><?= $user->cpf ?></td>
-                                <td><?= $user->name ?></td>
-                                <td><?= $user->phone ?></td>
-                                <td><?= $user->email ?></td>
-                                <td><?= $user->password ?></td>
-                                <td><?= $user->profile ?></td>
-                                <td>
-                                    <div class="row">
-                                        <div class="col-2">
-                                            <a href="#edit-user-modal" data-id="<?= $user->id ?>" data-bs-toggle="modal" class="link-edit-user">
-                                                <i class="bi bi-pencil-square text-info fs-6"></i>
-                                            </a>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="#remove-user-modal" data-id="<?= $user->id ?>" data-bs-toggle="modal" class="link-remove-user">
-                                                <i class="bi bi-trash3-fill text-danger fs-6"></i>
-                                            </a>
-                                        </div>
+                            <td><?= $user->cpf ?></td>
+                            <td><?= $user->name ?></td>
+                            <td><?= $user->email ?></td>
+                            <td><?= $user->password ?></td>
+                            <td><?= $user->profile ?></td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-2">
+                                        <a href="#edit-user-modal" data-id="<?= $user->id ?>" data-bs-toggle="modal" class="link-edit-user">
+                                            <i class="bi bi-pencil-square text-info fs-6"></i>
+                                        </a>
                                     </div>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </small>
+                                    <div class="col-2">
+                                        <a href="#remove-user-modal" data-id="<?= $user->id ?>" data-bs-toggle="modal" class="link-remove-user">
+                                            <i class="bi bi-trash3-fill text-danger fs-6"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -95,24 +90,18 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" id="add-new-user-frm">
+                <form method="POST" id="addNewUserFrm">
                     <div class="row g-2 my-2">
                         <div class="col-12 col-md-4 col-lg-3">
                             <div class="form-floating">
-                                <input type="text" name="input_cpf" id="cpf" placeholder="cpf" required class="form-control">
+                                <input type="text" name="input_cpf" id="addUserCpf" placeholder="cpf" class="form-control">
                                 <label for="cpf" class="form-label">CPF</label>
                             </div>
                         </div>
-                        <div class="col-12 col-md-4 col-lg-6">
+                        <div class="col-12 col-md-8 col-lg-9">
                             <div class="form-floating">
-                                <input type="text" name="input_name" id="name" placeholder="name" required class="form-control">
+                                <input type="text" name="input_name" id="addUserName" placeholder="name" class="form-control">
                                 <label for="name" class="form-label">Nome</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4 col-lg-3">
-                            <div class="form-floating">
-                                <input type="text" name="input_phone" id="phone" placeholder="Contato" required class="form-control">
-                                <label for="phone" class="form-label">Contato</label>
                             </div>
                         </div>
                     </div>
@@ -122,19 +111,19 @@
                             <div class="row g-2">
                                 <div class="col-12 col-sm-4 col-lg-4">
                                     <div class="form-floating">
-                                        <input type="email" name="input_email" id="email" placeholder="email" required class="form-control">
+                                        <input type="email" name="input_email" id="addUserEmail" placeholder="email" class="form-control">
                                         <label for="email" class="form-label">Email</label>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-4 col-lg-3">
                                     <div class="form-floating">
-                                        <input type="password" name="input_password" id="password" placeholder="password" required class="form-control">
+                                        <input type="password" name="input_password" id="addUserPassword" placeholder="password" class="form-control">
                                         <label for="password" class="form-label">Senha</label>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-4 col-lg-5">
                                     <div class="form-floating">
-                                        <select name="select_profile" id="profile" placeholder="Nível" required class="form-select">
+                                        <select name="select_profile" id="addUserProfile" placeholder="Nível" class="form-select">
                                             <option value="admin">Administrador</option>
                                             <option value="tesoureiro">Tesoureiro</option>
                                             <option value="operador">Operador</option>
@@ -163,17 +152,17 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" id="edit-user-frm">
+                <form method="post" id="editUserFrm">
                     <div class="row my-3">
                         <div class="col-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" name="input_name" id="name" placeholder="Nome" required>
+                                <input type="text" class="form-control" name="input_name" id="editUserName" placeholder="Nome">
                                 <label for="name">Nome</label>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" name="input_cpf" id="cpf" placeholder="CPF" required>
+                                <input type="text" class="form-control" name="input_cpf" id="editUserCpf" placeholder="CPF">
                                 <label for="cpf">CPF</label>
                             </div>
                         </div>
@@ -182,7 +171,7 @@
                     <div class="row my-3">
                         <div class="col-12">
                             <div class="form-floating">
-                                <input type="email" class="form-control" name="input_email" id="email" placeholder="Email" required>
+                                <input type="email" class="form-control" name="input_email" id="editUserEmail" placeholder="Email">
                                 <label for="email">Email</label>
                             </div>
                         </div>
@@ -191,7 +180,7 @@
                     <div class="row my-3">
                         <div class="col-12">
                             <div class="form-floating">
-                                <input type="password" class="form-control" name="input_password" id="password" placeholder="Senha" required>
+                                <input type="password" class="form-control" name="input_password" id="editUserPassword" placeholder="Senha">
                                 <label for="password">Senha</label>
                             </div>
                         </div>
@@ -200,7 +189,7 @@
                     <div class="row my-3">
                         <div class="col-12">
                             <div class="form-floating">
-                                <select name="select_profile" id="profile" placeholder="Nível" required class="form-select">
+                                <select name="select_profile" id="editUserProfile" placeholder="Nível" class="form-select">
                                     <option value="admin">Administrador</option>
                                     <option value="tesoureiro">Tesoureiro</option>
                                     <option value="operador">Operador</option>
@@ -227,7 +216,7 @@
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Remover Registro</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="post" id="remove-user-frm">
+            <form method="post" id="removeUserFrm">
                 <div class="modal-body">
                     <p>Deseja Realmente Excluir este Registro?</p>
                 </div>
@@ -239,177 +228,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    //get all forms
-    const $frmAddNewUser = document.querySelector("#add-new-user-frm")
-    const $frmEditUser = document.querySelector("#edit-user-frm")
-    const $frmRemoveUser = document.querySelector("#remove-user-frm")
-    const $linksRemoveUser = [...document.querySelectorAll(".link-remove-user")]
-    const $linksEditUser = [...document.querySelectorAll(".link-edit-user")]
-    const $tableUsers = document.querySelector("#table-users")
-
-    let updatedUserId = 0
-
-    //test user
-    function fakeUser(number = "") {
-        $frmAddNewUser.querySelector("#name").value = `teste${number}`
-        $frmAddNewUser.querySelector("#cpf").value = "111.111.111-11"
-        $frmAddNewUser.querySelector("#email").value = `teste${number}@gmail.com`
-        $frmAddNewUser.querySelector("#phone").value = "(11) 11111-1111"
-        $frmAddNewUser.querySelector("#password").value = "123"
-        $frmAddNewUser.querySelector("#profile").value = "operador"
-    }
-
-
-    //function for to add a new user in the database
-    function load_users() {
-
-        axios.get("?ct=user&mt=index")
-            .then(response => {
-                if (response.status === 200) {
-                    return response.data
-                } else {
-                    throw Error("Erro, Não foi possível se acessar o recurso!")
-                }
-            })
-            .then(data => {
-                console.log(data)
-            })
-            .catch(error => {
-                console.log(error.message)
-            })
-    }
-
-    function reload(){
-        location.reload()
-    }
-
-    function updateIdUser(e) {
-        updatedUserId = e.target.dataset.id
-        console.log(updatedUserId)
-    }
-    
-    function updateUserData(e) {
-        //get inputs
-        const cpfValue = $frmEditUser.querySelector("#cpf")
-        const nameValue = $frmEditUser.querySelector("#name")
-        const emailValue = $frmEditUser.querySelector("#email")
-        const passwordValue = $frmEditUser.querySelector("#password")
-        const profileValue = $frmEditUser.querySelector("#profile")
-        
-        updatedIdUser = e.target.dataset.id
-        console.log(updatedIdUser);
-    }
-
-    function addNewUser(e) {
-        e.preventDefault()
-
-        const nameAdd = $frmAddNewUser.querySelector("#name").value
-        const cpfAdd = $frmAddNewUser.querySelector("#cpf").value
-        const emailAdd = $frmAddNewUser.querySelector("#email").value
-        const phoneAdd = $frmAddNewUser.querySelector("#phone").value
-        const passwordAdd = $frmAddNewUser.querySelector("#password").value
-        const $profileElement = $frmAddNewUser.querySelector("#profile")
-        const profileAdd = $profileElement.options[$profileElement.selectedIndex].value
-
-        axios.post("?ct=user&mt=insert_user", {
-                nameSend: nameAdd,
-                cpfSend: cpfAdd,
-                emailSend: emailAdd,
-                phoneSend: phoneAdd,
-                passwordSend: passwordAdd,
-                profileSend: profileAdd
-            })
-            .then(response => {
-                if (response.status === 200) {
-                    return "OK, USER ADDED!"
-                } else {
-                    throw Error("Error!")
-                }
-            })
-            .then(data => {
-                console.log(data)
-            })
-            .catch(error => {
-                console.log(error.message)
-            })
-
-        reload()
-    }
-    
-    function updateUser(e){
-        e.preventDefault()
-
-        const nameAdd = $frmEditUser.querySelector("#name").value
-        const cpfAdd = $frmEditUser.querySelector("#cpf").value
-        const emailAdd = $frmEditUser.querySelector("#email").value
-        const passwordAdd = $frmEditUser.querySelector("#password").value
-        const $profileElement = $frmEditUser.querySelector("#profile")
-        const profileAdd = $profileElement.options[$profileElement.selectedIndex].value
-
-        const idAdd = updatedIdUser
-        axios.post("?ct=user&mt=update_user", {
-            idSend: idAdd,
-            cpfSend: cpfAdd,
-            nameSend: nameAdd,
-            emailSend: emailAdd,
-            cpfSend: cpfAdd,
-            passwordSend:passwordAdd,
-            profileSend: profileAdd
-        })
-        .then(response => {
-            if (response.status === 200){
-                return response.data//`OK, USER ${idAdd} UPDATED`
-            } else {
-                throw Error("Recurso não disponível!")
-            }
-        })
-        .then(data => {
-            console.log(data)
-        })
-        .catch(error => {
-            console.log(error.message)
-        })
-
-        reload();
-    }
-
-    function removeUser(e) {
-        e.preventDefault();
-
-        const idAdd = updatedUserId
-        axios.post("?ct=user&mt=remove_user", {
-                idSend: idAdd
-            })
-            .then(response => {
-                if (response.status === 200) {
-                    return `USER ${idAdd} DELETED`
-                } else {
-                    throw Error("Recurso indisponível!")
-                }
-            })
-            .then(data => {
-                console.log(data)
-            })
-            .catch(error => {
-                console.log(error.message)
-            })
-
-        reload()
-    }
-
-    //events
-    $linksRemoveUser.forEach($link => {
-        $link.addEventListener("click", updateIdUser)
-    })
-
-    $linksEditUser.forEach($link => {
-        $link.addEventListener("click", updateUserData)
-    })
-
-    $frmAddNewUser.addEventListener("submit", addNewUser)
-    $frmEditUser.addEventListener("submit", updateUser)
-    $frmRemoveUser.addEventListener("submit", removeUser)
-
-</script>
