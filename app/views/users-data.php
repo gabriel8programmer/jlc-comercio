@@ -55,12 +55,12 @@
                             <td>
                                 <div class="row">
                                     <div class="col-2">
-                                        <a href="#edit-user-modal" data-id="<?= $user->id ?>" data-bs-toggle="modal" class="link-edit-user">
+                                        <a href="#edit-user-modal" data-id="<?= $user->id ?>" data-bs-toggle="modal" class="edit-link">
                                             <i class="bi bi-pencil-square text-info fs-6"></i>
                                         </a>
                                     </div>
                                     <div class="col-2">
-                                        <a href="#remove-user-modal" data-id="<?= $user->id ?>" data-bs-toggle="modal" class="link-remove-user">
+                                        <a href="#remove-user-modal" data-id="<?= $user->id ?>" data-bs-toggle="modal" class="remove-link">
                                             <i class="bi bi-trash3-fill text-danger fs-6"></i>
                                         </a>
                                     </div>
@@ -90,7 +90,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" id="addNewUserFrm">
+                <form id="addNewUserFrm">
                     <div class="row g-2 my-2">
                         <div class="col-12 col-md-4 col-lg-3">
                             <div class="form-floating">
@@ -152,7 +152,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" id="editUserFrm">
+                <form id="editUserFrm">
                     <div class="row my-3">
                         <div class="col-6">
                             <div class="form-floating">

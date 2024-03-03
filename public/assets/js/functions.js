@@ -40,16 +40,21 @@ const user = {
         })
         .then(data => {
             console.log(data);
-            // Faça algo com os dados recebidos, se necessário
         })
         .catch(error => {
             // Aqui você pode tratar erros
             console.error('Erro durante a requisição:', error);
         });
+
+        //reload page
+        location.reload();
     },
     update: (e) => {
     },
     delete: (e) => {
+    },
+    updateId: (e)=>{
+        return e.target.dataset.id;
     }
 }
 

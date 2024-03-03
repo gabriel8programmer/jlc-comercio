@@ -54,13 +54,20 @@ class User extends BaseController
         $results = $model->insert($params);
     }
 
-    public function update_user(){
-        if (!check_login()){
+    public function update(){
+        if (!check_login()) {
             header("Location: index.php");
+            return;
         }
 
+        if ($_SERVER["REQUEST_METHOD"] != "PUT"){
+            $this->index();
+            return;
+        }
+        
         $data = json_decode(file_get_contents("php://input"), true);
         extract($data);
+
         $params = [
             ":id" => $idSend,
             ":name" => $nameSend,
@@ -72,16 +79,15 @@ class User extends BaseController
 
         $model = new Users();
         $results = $model->update($params);
-
     }
 
-    public function remove_user(){
+    public function delete(){
         if (!check_login()) {
             header("Location: index.php");
             return;
         }
 
-        if ($_SERVER["REQUEST_METHOD"] != "POST"){
+        if ($_SERVER["REQUEST_METHOD"] != "DELETE"){
             $this->index();
             return;
         }
