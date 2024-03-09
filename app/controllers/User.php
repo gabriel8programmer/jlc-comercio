@@ -23,6 +23,7 @@ class User extends BaseController
         //load users
         $this->view("layouts/html_header");
         $this->view("header-navbar", $data);
+
         //add modals
         $this->view("user-modal-add-new");
         $this->view("user-modal-edit");
@@ -69,18 +70,22 @@ class User extends BaseController
             $this->index();
             return;
         }
-        
+
         $data = json_decode(file_get_contents("php://input"), true);
         extract($data);
 
         $params = [
-            ":id" => $idSend,
-            ":name" => $nameSend,
-            ":cpf" => $cpfSend,
-            ":email" => $emailSend,
-            ":password" => $passwordSend,
-            ":profile" => $profileSend
+            ":id" => $id,
+            ":name" => $name,
+            ":cpf" => $cpf,
+            ":email" => $email,
+            ":password" => $password,
+            ":profile" => $profile
         ];
+
+        // echo "<pre>";
+        // echo print_r($params);
+        // exit();
 
         $model = new Users();
         $results = $model->update($params);
@@ -100,7 +105,7 @@ class User extends BaseController
         $data = json_decode(file_get_contents("php://input"), true);
         extract($data);
         $model = new Users();
-        $results = $model->delete($idSend);
+        $results = $model->delete($id);
     }
 
 }

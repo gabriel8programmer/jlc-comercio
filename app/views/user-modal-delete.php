@@ -6,13 +6,13 @@
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Remover Registro</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="post" id="removeUserFrm">
+            <form method="post">
                 <div class="modal-body">
                     <p>Deseja Realmente Excluir este Registro?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    <button type="submit" name="btn-submit" id="btnRemoveUser" class="btn btn-danger">Excluir</button>
+                    <button type="submit" name="btn-edit" class="btn btn-danger">Excluir</button>
                 </div>
             </form>
         </div>

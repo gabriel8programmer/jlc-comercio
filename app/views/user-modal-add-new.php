@@ -7,17 +7,17 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="addNewUserFrm">
+                <form method="post">
                     <div class="row g-2 my-2">
                         <div class="col-12 col-md-4 col-lg-3">
                             <div class="form-floating">
-                                <input type="text" name="input_cpf" id="addUserCpf" placeholder="cpf" class="form-control">
+                                <input type=button"text" name="input_cpf" id="user_cpf" placeholder="cpf" class="form-control">
                                 <label for="cpf" class="form-label">CPF</label>
                             </div>
                         </div>
                         <div class="col-12 col-md-8 col-lg-9">
                             <div class="form-floating">
-                                <input type="text" name="input_name" id="addUserName" placeholder="name" class="form-control">
+                                <input type="text" name="input_name" id="user_name" placeholder="name" class="form-control">
                                 <label for="name" class="form-label">Nome</label>
                             </div>
                         </div>
@@ -28,19 +28,19 @@
                             <div class="row g-2">
                                 <div class="col-12 col-sm-4 col-lg-4">
                                     <div class="form-floating">
-                                        <input type="email" name="input_email" id="addUserEmail" placeholder="email" class="form-control">
+                                        <input type="email" name="input_email" id="user_email" placeholder="email" class="form-control">
                                         <label for="email" class="form-label">Email</label>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-4 col-lg-3">
                                     <div class="form-floating">
-                                        <input type="password" name="input_password" id="addUserPassword" placeholder="password" class="form-control">
+                                        <input type="password" name="input_password" id="user_password" placeholder="password" class="form-control">
                                         <label for="password" class="form-label">Senha</label>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-4 col-lg-5">
                                     <div class="form-floating">
-                                        <select name="select_profile" id="addUserProfile" placeholder="Nível" class="form-select">
+                                        <select name="select_profile" id="user_profile" placeholder="Nível" class="form-select">
                                             <option value="admin">Administrador</option>
                                             <option value="tesoureiro">Tesoureiro</option>
                                             <option value="operador">Operador</option>
@@ -51,7 +51,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-lg-3">
-                            <input type="submit" id="btnAddNewUser" class="btn btn-success text-light w-100" value="Gravar">
+                            <input type="submit" class="btn btn-success text-light w-100" value="Gravar">
                         </div>
                     </div>
                 </form>

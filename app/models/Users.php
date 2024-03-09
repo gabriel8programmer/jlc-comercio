@@ -91,7 +91,7 @@ class Users extends BaseModel
      
         $this->db_connect();
         $results = $this->non_query("UPDATE users SET ". 
-        "`name` = :name, ".
+        "name = :name, ".
         "cpf = AES_ENCRYPT(:cpf, '". MYSQL_AES_KEY ."'), " .
         "email = AES_ENCRYPT(:email, '". MYSQL_AES_KEY ."'), " .
         "password = AES_ENCRYPT(:password, '". MYSQL_AES_KEY ."'), " .

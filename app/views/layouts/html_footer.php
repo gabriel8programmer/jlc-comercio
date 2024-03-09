@@ -6,6 +6,7 @@
 
 <!--datatable links js -->
 <script src="./assets/DataTables/datatables.min.js"></script>
+<script src="./assets/DataTables/dataTables.bootstrap5.min.js"></script>
 
 </body>
 

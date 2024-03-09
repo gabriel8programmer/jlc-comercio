@@ -56,3 +56,6 @@
 [2024-03-08T23:30:53.067735+00:00] app_logs.INFO: admin - Login com sucesso [] []
 [2024-03-09T00:13:02.876400+00:00] app_logs.INFO: admin - fez logout [] []
 [2024-03-09T00:13:06.371694+00:00] app_logs.INFO: admin - Login com sucesso [] []
+[2024-03-09T00:35:47.626837+00:00] app_logs.INFO: admin - fez logout [] []
+[2024-03-09T00:36:11.614806+00:00] app_logs.INFO: admin - Login com sucesso [] []
+[2024-03-09T12:19:24.001550+00:00] app_logs.INFO: admin - Login com sucesso [] []

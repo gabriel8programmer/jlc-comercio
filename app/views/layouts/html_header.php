@@ -20,7 +20,8 @@
     
     <!--dataTables library -->
     <link href="./assets/DataTables/datatables.min.css" rel="stylesheet">
-   
+    <link rel="stylesheet" href="./assets/DataTables/dataTables.bootstrap5.min.css">
+    
     <!--custom css-->
     <link rel="stylesheet" href="./assets/css/app.min.css">
 
