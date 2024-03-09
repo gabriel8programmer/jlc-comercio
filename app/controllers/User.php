@@ -23,7 +23,12 @@ class User extends BaseController
         //load users
         $this->view("layouts/html_header");
         $this->view("header-navbar", $data);
-        $this->view("users-data", $data);
+        //add modals
+        $this->view("user-modal-add-new");
+        $this->view("user-modal-edit");
+        $this->view("user-modal-delete");
+        
+        $this->view("users-dashboard", $data);
         $this->view("layouts/html_footer");
     }
 

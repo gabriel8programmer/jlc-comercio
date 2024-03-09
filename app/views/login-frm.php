@@ -1,5 +1,5 @@
 
-<div class="bg-primary w-100 vh-100">
+<div class="bg-primary w-100 h-100">
     <div class="container-fluid py-5" id="login">
 
         <div class="row justify-content-center">
@@ -51,5 +51,16 @@
             </div>
 
         </div>
+
+        <div class="row justify-content-center my-2">
+            <div class="col-10 col-sm-6 col-md-4 col-lg-3">
+                <?php if (!empty($server_error)): ?>
+                    <div class="alert alert-danger text-danger text-center">
+                        <p><?= $server_error ?></p>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+        
     </div>
 </div>
