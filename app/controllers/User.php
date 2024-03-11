@@ -83,10 +83,6 @@ class User extends BaseController
             ":profile" => $profile
         ];
 
-        // echo "<pre>";
-        // echo print_r($params);
-        // exit();
-
         $model = new Users();
         $results = $model->update($params);
     }

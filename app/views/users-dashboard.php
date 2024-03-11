@@ -101,7 +101,7 @@
         $(`#${modal}`).modal('hide');
     }
 
-    const reload = ()=> {
+    const reload = () => {
         //relaod the page
         location.reload();
     }
@@ -119,31 +119,31 @@
 
         //execute fetch for database
         fetch("?ct=user&mt=insert", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json; charset=utf-8"
-            },
-            body: JSON.stringify({
-                name,
-                cpf,
-                email,
-                password,
-                profile
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8"
+                },
+                body: JSON.stringify({
+                    name,
+                    cpf,
+                    email,
+                    password,
+                    profile
+                })
             })
-        })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error("Erro na requisição!");
-            }
-        })
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => {
-            console.error('Erro durante a requisição:', error);
-        });
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("Erro na requisição!");
+                }
+            })
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Erro durante a requisição:', error);
+            });
     }
 
     const update = (data) => {
@@ -197,27 +197,27 @@
 
         //fetch api
         fetch("?ct=user&mt=delete", {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json; charset=utf-8"
-            },
-            body: JSON.stringify({
-                id
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8"
+                },
+                body: JSON.stringify({
+                    id
+                })
             })
-        })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error("Erro na requisição!");
-            }
-        })
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => {
-            console.error('Erro durante a requisição:', error);
-        });
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("Erro na requisição!");
+                }
+            })
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Erro durante a requisição:', error);
+            });
     }
 
     //button add new
@@ -245,6 +245,9 @@
 
         //hide modal
         hideModal("modal-add-new");
+
+        //reload window
+        reload();
     });
 
     //edit links
@@ -291,8 +294,8 @@
                 //update the user
                 update(data);
 
-                //hide modal
-                // hideModal("modal-edit");
+                //reload window
+                reload();
 
             });
         });
@@ -320,6 +323,9 @@
 
                 //hide modal
                 hideModal("modal-delete");
+
+                //reload window
+                reload();
             });
         });
     });

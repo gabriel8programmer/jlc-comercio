@@ -41,6 +41,7 @@
                                 <div class="col-12 col-sm-4 col-lg-5">
                                     <div class="form-floating">
                                         <select name="select_profile" id="user_profile" placeholder="Nível" class="form-select">
+                                            <option value="" selected disabled>Selecione</option>    
                                             <option value="admin">Administrador</option>
                                             <option value="tesoureiro">Tesoureiro</option>
                                             <option value="operador">Operador</option>
