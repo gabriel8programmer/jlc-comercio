@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `buys` (
   `validate` date NOT NULL,
   `expiration_days` int NOT NULL,
   `img` blob,
-  `createAt` datetime DEFAULT NULL,
+  `createdAt` datetime DEFAULT NULL,
   `updatedAt` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `supplier_buy_suppliers_id` (`supplier_id`) USING BTREE,
@@ -177,15 +177,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varbinary(200) NOT NULL,
   `profile` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `createdAt` datetime DEFAULT NULL,
-  `udpatedAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Copiando dados para a tabela db_jlccomercio.users: ~3 rows (aproximadamente)
-INSERT INTO `users` (`id`, `name`, `cpf`, `email`, `password`, `profile`, `createdAt`, `udpatedAt`) VALUES
+INSERT INTO `users` (`id`, `name`, `cpf`, `email`, `password`, `profile`, `createdAt`, `updatedAt`) VALUES
 	(1, 'admin', _binary 0x3836141548878980db35dc126390ddc1, _binary 0x3ee2b12639e0de58ec20ed707b207318, _binary 0x007885a72f0878729bfa614fa28f8ccf, 'admin', '2024-01-18 15:17:03', NULL),
 	(10, 'user1', _binary 0x47164e390db853ca3f59f89209a5961a, _binary 0x1d488b91f3b73d15aed134bb2b47ab0d56a57c10f0bdaa1c732493c447249424, _binary 0x48a8513ddbc555cd3c1ec0faefed8064, 'tesoureiro', '2024-03-03 11:37:47', NULL),
-	(11, 'user2', _binary 0x2e92c8c77691b934bb3d51b6bb287338, _binary 0x24e801cb762da57a42ac874df4032b4a56a57c10f0bdaa1c732493c447249424, _binary 0xa1e394573b05ff131c931ace98b8fe41, 'operador', '2024-03-03 11:38:21', NULL);
+	(12, 'user3', _binary 0x2e92c8c77691b934bb3d51b6bb287338, _binary 0xf3b0e26913c37e591a0a235a70e2a886, _binary 0x007885a72f0878729bfa614fa28f8ccf, 'admin', '2024-03-11 10:25:57', NULL);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
