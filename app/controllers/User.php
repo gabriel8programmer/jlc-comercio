@@ -22,19 +22,17 @@ class User extends BaseController
         
         //load users
         $this->view("layouts/html_header");
-        $this->view("header-navbar", $data);
-
+        $this->view("layouts/header", $data);
+        $this->view("layouts/modal-edit-profile");
         //add modals
         $this->view("user-modal-add-new");
         $this->view("user-modal-edit");
         $this->view("user-modal-delete");
-        
         $this->view("users-dashboard", $data);
         $this->view("layouts/html_footer");
     }
 
     public function insert(){
-
         if (!check_login()){
            header("Location: index.php");
         }
@@ -47,6 +45,11 @@ class User extends BaseController
         $data = json_decode(file_get_contents("php://input"), true);
         extract($data);
 
+        //test if the email is invalid
+        if (!validateEmail($email)){
+            return;
+        }
+
         $params = [
             ":name" => $name,
             ":cpf" => $cpf,
@@ -57,7 +60,7 @@ class User extends BaseController
 
         //to instaciate the class users
         $model = new Users();
-        $results = $model->insert($params);
+        $model->insert($params);
     }
 
     public function update(){
@@ -84,7 +87,7 @@ class User extends BaseController
         ];
 
         $model = new Users();
-        $results = $model->update($params);
+        $model->update($params);
     }
 
     public function delete(){
@@ -101,7 +104,7 @@ class User extends BaseController
         $data = json_decode(file_get_contents("php://input"), true);
         extract($data);
         $model = new Users();
-        $results = $model->delete($id);
+        $model->delete($id);
     }
 
 }

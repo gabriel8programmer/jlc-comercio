@@ -8,10 +8,10 @@
         </div>
     </div>
 
-    <div class="row justify-content-center">
+    <div class="row mx-1">
         <div class="col-12">
             <small>
-                <table id="table-users" class="table table-responsive table-hover">
+                <table id="table-users" class="table table-hover">
                     <thead>
                         <tr>
                             <th scope="col">CPF</th>
@@ -53,177 +53,18 @@
             </small>
         </div>
     </div>
-
 </div>
-
-<!--datatable initialization-->
-<script>
-    $(document).ready(function() {
-        // datatable
-        $('#table-users').DataTable({
-            pageLength: 10,
-            pagingType: "full_numbers",
-            language: {
-                decimal: "",
-                emptyTable: "Sem dados disponíveis na tabela.",
-                info: "Mostrando _START_ até _END_ de _TOTAL_ registos",
-                infoEmpty: "Mostrando 0 até 0 de 0 registos",
-                infoFiltered: "(Filtrando _MAX_ total de registos)",
-                infoPostFix: "",
-                thousands: ",",
-                lengthMenu: "Mostrando _MENU_ registos por página.",
-                loadingRecords: "Carregando...",
-                processing: "Processando...",
-                search: "Filtrar:",
-                zeroRecords: "Nenhum registro encontrado.",
-                paginate: {
-                    first: "Primeira",
-                    last: "Última",
-                    next: "Seguinte",
-                    previous: "Anterior"
-                },
-                aria: {
-                    sortAscending: ": ative para classificar a coluna em ordem crescente.",
-                    sortDescending: ": ative para classificar a coluna em ordem decrescente."
-                }
-            }
-        });
-    });
-</script>
 
 <!-- try modals -->
 <script>
-    const showModal = (modal) => {
-        $(`#${modal}`).modal('show');
-    }
-
-    const hideModal = (modal) => {
-        $(`#${modal}`).modal('hide');
-    }
-
-    const reload = () => {
-        //relaod the page
-        location.reload();
-    }
-
-    const insert = (data) => {
-
-        //get all data
-        const {
-            name,
-            cpf,
-            email,
-            password,
-            profile
-        } = data;
-
-        //execute fetch for database
-        fetch("?ct=user&mt=insert", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json; charset=utf-8"
-                },
-                body: JSON.stringify({
-                    name,
-                    cpf,
-                    email,
-                    password,
-                    profile
-                })
-            })
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error("Erro na requisição!");
-                }
-            })
-            .then(data => {
-                console.log(data);
-            })
-            .catch(error => {
-                console.error('Erro durante a requisição:', error);
-            });
-    }
-
-    const update = (data) => {
-
-        //get all data
-        const {
-            id,
-            name,
-            cpf,
-            email,
-            password,
-            profile
-        } = data;
-
-        //execute fetch for database
-        fetch("?ct=user&mt=update", {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json; charset=utf-8"
-            },
-            body: JSON.stringify({
-                id,
-                name,
-                cpf,
-                email,
-                password,
-                profile
-            })
-        })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error("Erro na requisição!");
-            }
-        })
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => {
-            console.error('Erro durante a requisição:', error);
-        });
-    }
-
-    const remove = (data) => {
-
-        //get data
-        const {
-            id
-        } = data;
-
-        //fetch api
-        fetch("?ct=user&mt=delete", {
-                method: "DELETE",
-                headers: {
-                    "Content-Type": "application/json; charset=utf-8"
-                },
-                body: JSON.stringify({
-                    id
-                })
-            })
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error("Erro na requisição!");
-                }
-            })
-            .then(data => {
-                console.log(data);
-            })
-            .catch(error => {
-                console.error('Erro durante a requisição:', error);
-            });
-    }
+    window.addEventListener("load", () =>{
+        //load dataTable in table users
+        loadDataTables("table-users");
+    });
 
     //button add new
     document.querySelector("#modal-add-new form").addEventListener("submit", (e) => {
         e.preventDefault();
-
         //get input values
         const nameValue = e.target.querySelector("#user_name").value;
         const cpfValue = e.target.querySelector("#user_cpf").value;
@@ -241,11 +82,10 @@
         }
 
         //insert new user
-        insert(data);
-
+        const endpoint = "ct=user&mt=insert";
+        insert(endpoint, data);
         //hide modal
         hideModal("modal-add-new");
-
         //reload window
         reload();
     });
@@ -292,8 +132,10 @@
                 }
 
                 //update the user
-                update(data);
-
+                const endpoint = "ct=user&mt=update";
+                update(endpoint, data);
+                //hide modal
+                hideModal("modal-edit");
                 //reload window
                 reload();
 
@@ -319,11 +161,10 @@
                 }
 
                 //delete a user
-                remove(data);
-
+                const endpoint = "ct=user&mt=delete";
+                remove(endpoint, data);
                 //hide modal
                 hideModal("modal-delete");
-
                 //reload window
                 reload();
             });

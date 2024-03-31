@@ -19,7 +19,8 @@ class Main extends BaseController {
         $data["login"] = $_SESSION["login"];
 
         $this->view("layouts/html_header");
-        $this->view("header-navbar", $data);
+        $this->view("layouts/header", $data);
+        $this->view("layouts/modal-edit-profile");
         $this->view("homepage", $data);
         $this->view("layouts/html_footer");
     }

@@ -4,7 +4,6 @@
             <img src="./assets/img/logo-large.png" alt="logo da applicação" class="img-fluid">
         </div>
     </div>
-
     <div class="row px-5" id="navbar-dashboard">
         <div class="col">
             <nav class="navbar navbar-expand-lg">
@@ -101,7 +100,15 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
                             <li>
-                                <a class="dropdown-item text-light" href data-bs-toggle="modal" data-bs-target="#modal-edit-profile">Editar Perfil</a>
+                                <a 
+                                    id="link-edit-profile"
+                                    class="dropdown-item text-light" 
+                                    href="#edit-profile"
+                                    data-id="<?= $login->id ?>"
+                                    data-bs-toggle="modal"
+                                >
+                                    Editar Perfil
+                                </a>
                             </li>
                             <li>
                                 <hr class="dropdown-divider text-light">
@@ -115,54 +122,12 @@
     </div>
 </header>
 
-<!--modal what to edit profile of a user-->
-<div class="modal fade" id="modal-edit-profile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="my-modal modal-content border border-primary">
-            <div class="modal-header" id="header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Perfil</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form method="POST" id="edit-profile-frm" action="?ct=main&mt=edit_profile&id=<?= $login->id ?>">
-                    <div class="row my-3">
-                        <div class="col-6">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" name="input_name" id="name" placeholder="Nome" required value="<?= $login->name ?>">
-                                <label for="name">Nome</label>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" name="input_cpf" id="cpf" placeholder="CPF" required>
-                                <label for="cpf">CPF</label>
-                            </div>
-                        </div>
-                    </div>
+<script>
 
-                    <div class="row my-3">
-                        <div class="col-12">
-                            <div class="form-floating">
-                                <input type="email" class="form-control" name="input_email" id="email" placeholder="Email" required>
-                                <label for="email">Email</label>
-                            </div>
-                        </div>
-                    </div>
+    document.querySelector("#link-edit-profile").addEventListener("click", (e)=> {
+        e.preventDefault();
+        //get id
+        const id = e.target.dataset.id;
+    });
 
-                    <div class="row my-3">
-                        <div class="col-12">
-                            <div class="form-floating">
-                                <input type="password" class="form-control" name="input_password" id="password" placeholder="Senha" required>
-                                <label for="password">Senha</label>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-success">Salvar</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+</script>

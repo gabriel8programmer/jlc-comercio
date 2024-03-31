@@ -11,13 +11,13 @@
                     <div class="row my-3">
                         <div class="col-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" name="name" id="user_edit_name" placeholder="Nome">
+                                <input type="text" class="form-control" name="name" id="user_edit_name" placeholder="Nome" required>
                                 <label for="name">Nome</label>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" name="cpf" id="user_edit_cpf" placeholder="CPF">
+                                <input type="text" class="form-control" name="cpf" id="user_edit_cpf" placeholder="CPF" required>
                                 <label for="cpf">CPF</label>
                             </div>
                         </div>
@@ -26,7 +26,7 @@
                     <div class="row my-3">
                         <div class="col-12">
                             <div class="form-floating">
-                                <input type="email" class="form-control" name="email" id="user_edit_email" placeholder="Email">
+                                <input type="email" class="form-control" name="email" id="user_edit_email" placeholder="Email" required>
                                 <label for="email">Email</label>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                     <div class="row my-3">
                         <div class="col-12">
                             <div class="form-floating">
-                                <input type="password" class="form-control" name="password" id="user_edit_password" placeholder="Senha">
+                                <input type="password" class="form-control" name="password" id="user_edit_password" placeholder="Senha" required>
                                 <label for="password">Senha</label>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                     <div class="row my-3">
                         <div class="col-12">
                             <div class="form-floating">
-                                <select name="select_profile" id="user_edit_profile" placeholder="Nível" class="form-select">
+                                <select name="select_profile" id="user_edit_profile" placeholder="Nível" class="form-select" required>
                                     <option value="admin">Administrador</option>
                                     <option value="tesoureiro">Tesoureiro</option>
                                     <option value="operador">Operador</option>
@@ -62,3 +62,10 @@
         </div>
     </div>
 </div>
+
+<!--validations-->
+<script>
+    window.addEventListener("load", ()=> {
+        getCpfMask("user_edit_cpf");
+    });
+</script>

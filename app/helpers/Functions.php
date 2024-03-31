@@ -56,3 +56,24 @@ function printData($data, $die = true){
         die("<br>FIM<br>");
     }
 }
+
+// Function to validate an email address
+function validateEmail($email) {
+    // Remove leading and trailing whitespace from the email address
+    $email = trim($email);
+    
+    // Validate the format of the email address using a regular expression
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return false;
+    }
+    
+    // Split the email address into username and domain
+    //list($username, $domain) = explode('@', $email);
+    
+    // Validate the username and domain
+    if (!preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email)) {
+        return false;
+    }
+    
+    return true;
+}
