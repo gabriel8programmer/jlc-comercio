@@ -128,4 +128,31 @@ class Main extends BaseController {
         $this->index();
         return;
     }
+
+    public function editProfile(){
+        if (!check_login()) {
+            header("Location: index.php");
+            return;
+        }
+
+        if ($_SERVER["REQUEST_METHOD"] != "PUT"){
+            $this->index();
+            return;
+        }
+
+        $data = json_decode(file_get_contents("php://input"), true);
+        extract($data);
+
+        $params = [
+            ":id" => $id,
+            ":name" => $name,
+            ":cpf" => $cpf,
+            ":email" => $email,
+            ":password" => $password,
+            ":profile" => null
+        ];
+
+        $model = new Users();
+        $model->update($params);
+    }
 }

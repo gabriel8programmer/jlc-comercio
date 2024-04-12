@@ -44,7 +44,11 @@ class Users extends BaseModel
             ":username" => $username
         ];
 
-        $results = $this->query("SELECT id, `name`, profile FROM users WHERE :username = `name`", $params);
+        $results = $this->query("SELECT id, `name`,
+        AES_DECRYPT(`cpf`, '" . MYSQL_AES_KEY . "') cpf,
+        AES_DECRYPT(`email`, '" . MYSQL_AES_KEY . "') email,
+        AES_DECRYPT(`password`, '" . MYSQL_AES_KEY . "') password,
+        `profile` FROM users WHERE :username = `name`", $params);
 
         return [
             "status" => "success",
@@ -88,8 +92,18 @@ class Users extends BaseModel
     }
 
     public function update($params){
-     
+
         $this->db_connect();
+
+        //get profile and name of the params
+        $profile = $params[":profile"];
+        $name = $params[":name"];
+
+        if (is_null($profile)){
+            $results = $this->get_user_data($name);
+            $params[":profile"] = $results["data"]->profile;
+        }
+
         $results = $this->non_query("UPDATE users SET ". 
         "name = :name, ".
         "cpf = AES_ENCRYPT(:cpf, '". MYSQL_AES_KEY ."'), " .
@@ -98,7 +112,7 @@ class Users extends BaseModel
         "profile = :profile, " . 
         "updatedAt = NOW() " .
         "WHERE id = :id", $params);
-
+    
         return [
             "status" => "success",
             "data" => $results->results

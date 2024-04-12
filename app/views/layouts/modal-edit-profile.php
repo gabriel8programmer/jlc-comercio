@@ -7,17 +7,17 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="POST" id="edit-profile-frm" action="?ct=main&mt=edit_profile&id=<?= $login->id ?>">
+                <form method="POST">
                     <div class="row my-3">
                         <div class="col-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" name="input_name" id="name" placeholder="Nome" required value="<?= $login->name ?>">
+                                <input type="text" class="form-control" name="input_name" id="profile_name" placeholder="Nome" required>
                                 <label for="name">Nome</label>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" name="input_cpf" id="cpf" placeholder="CPF" required>
+                                <input type="text" class="form-control" name="input_cpf" id="profile_cpf" placeholder="CPF" required>
                                 <label for="cpf">CPF</label>
                             </div>
                         </div>
@@ -26,7 +26,7 @@
                     <div class="row my-3">
                         <div class="col-12">
                             <div class="form-floating">
-                                <input type="email" class="form-control" name="input_email" id="email" placeholder="Email" required>
+                                <input type="email" class="form-control" name="input_email" id="profile_email" placeholder="Email" required>
                                 <label for="email">Email</label>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                     <div class="row my-3">
                         <div class="col-12">
                             <div class="form-floating">
-                                <input type="password" class="form-control" name="input_password" id="password" placeholder="Senha" required>
+                                <input type="password" class="form-control" name="input_password" id="profile_password" placeholder="Senha" required>
                                 <label for="password">Senha</label>
                             </div>
                         </div>
@@ -49,3 +49,10 @@
         </div>
     </div>
 </div>
+
+<!-- validations -->
+<script>
+    window.addEventListener("load", ()=> {
+        getCpfMask("profile_cpf");
+    });
+</script>

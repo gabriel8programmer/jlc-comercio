@@ -100,13 +100,9 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
                             <li>
-                                <a 
-                                    id="link-edit-profile"
-                                    class="dropdown-item text-light" 
-                                    href="#edit-profile"
-                                    data-id="<?= $login->id ?>"
-                                    data-bs-toggle="modal"
-                                >
+                                <a href="#" id="link-edit-profile" 
+                                class="dropdown-item text-light" 
+                                data-userLogin="<?= htmlspecialchars(json_encode($login)) ?>" data-toggle="modal">
                                     Editar Perfil
                                 </a>
                             </li>
@@ -123,11 +119,50 @@
 </header>
 
 <script>
-
-    document.querySelector("#link-edit-profile").addEventListener("click", (e)=> {
+    document.querySelector("#link-edit-profile").addEventListener("click", e => {
         e.preventDefault();
-        //get id
-        const id = e.target.dataset.id;
+        //get data json and transform in array
+        const data_serials = e.target.getAttribute('data-userLogin');
+        const data = JSON.parse(data_serials);
+
+        //get id value
+        const idValue = data.id;
+        
+        //show the modal
+        showModal("edit-profile");
+        //get the form
+        const form = document.querySelector("#edit-profile form");
+
+        //set values of the inputs
+        form.querySelector("#profile_name").value = data.name;
+        form.querySelector("#profile_cpf").value = data.cpf;
+        form.querySelector("#profile_email").value = data.email;
+        form.querySelector("#profile_password").value = data.password;
+
+        form.addEventListener("submit", e => {
+            e.preventDefault();
+
+            const nameValue = e.target.querySelector("#profile_name").value;
+            const cpfValue = e.target.querySelector("#profile_cpf").value;
+            const emailValue = e.target.querySelector("#profile_email").value;
+            const passwordValue = e.target.querySelector("#profile_password").value;
+
+            //define data
+            const data = {
+                id: idValue,
+                name: nameValue,
+                cpf: cpfValue,
+                email: emailValue,
+                password: passwordValue,
+            }
+
+            //update and close the modal
+            update("ct=main&mt=editProfile", data);
+
+            hideModal("edit-profile");
+            reload();
+
+        });
     });
 
 </script>

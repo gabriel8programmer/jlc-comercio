@@ -117,7 +117,6 @@ const remove = (endpoint, data) => {
 }
 
 function getCpfMask(id) {
-    console.log(id);
     //cpf
     document.querySelector(`#${id}`).addEventListener('input', function (e) {
         let cpf = e.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
